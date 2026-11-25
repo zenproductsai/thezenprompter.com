@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "check-links": "node scripts/check-links.mts http://localhost:3210",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "next": "16.4.6",
