@@ -34,23 +34,27 @@ export default function About() {
         <span className="tc y">About the founder</span>
         <h1 className="disp d2">{FOUNDER.name}</h1>
         <p className="lede">I design and build Zen Teleprompter and the other Zen Products apps. I write the posts on this site, and I read every email that comes in.</p>
+        {/* In the header, not a revealed rail: as a rail it was the largest text and its reveal
+            animation held LCP at 2.7 s (Lighthouse, live, 26 Nov 2026). */}
+        <p className="muted" style={{ maxWidth: "38em" }}>I have spent more than 15 years in product design and product leadership, building apps used by millions of people. I studied leadership at MIT Sloan and product management at ISB.</p>
       </div>
-      <Rail tc="01" label="Work" title="What I do" id="work"
-        lead="I have spent more than 15 years in product design and product leadership, building apps used by millions of people. I studied leadership at MIT Sloan and product management at ISB.">
-        <></>
+      <Rail tc="01" label="Method" title="How this site is written" id="method"
+        lead="Posts and guides describe the app as it ships.">
+        {/* Short lines rather than one long lead, so no revealed block outgrows the header
+            text and becomes a late LCP (it did, 3.2 s, before this). */}
+        <ul className="muted" style={{ display: "grid", gap: 8, paddingLeft: 18 }}>
+          <li>Numbers come from the app&apos;s own measurements, or from the source named next to them.</li>
+          <li>Comparisons use each rival&apos;s own App Store listing, dated when I checked it.</li>
+        </ul>
       </Rail>
-      <Rail tc="02" label="Method" title="How this site is written" id="method"
-        lead="Posts and guides describe the app as it ships. Numbers come from the app's own measurements or from the source named next to them, and comparisons use each rival's own App Store listing, dated when I checked it.">
-        <></>
-      </Rail>
-      <Rail tc="03" label="Elsewhere" title="Find me elsewhere" id="elsewhere">
+      <Rail tc="02" label="Elsewhere" title="Find me elsewhere" id="elsewhere">
         <div className="profiles">
           {FOUNDER.profiles.map((p) => (
             <a key={p.href} className="ghost" href={p.href} rel="me noopener" target="_blank">{p.label} <Icon name="arrow-up-right" /></a>
           ))}
         </div>
       </Rail>
-      <Rail tc="04" label="Contact" title="Write to me" id="contact" lead={`Questions, problems or ideas about the app: ${SUPPORT_EMAIL}, answered within 24 hours.`}>
+      <Rail tc="03" label="Contact" title="Write to me" id="contact" lead={`Questions, problems or ideas about the app: ${SUPPORT_EMAIL}, answered within 24 hours.`}>
         <Link className="ghost" href="/contact">Write to the Founder <Icon name="arrow-right" /></Link>
       </Rail>
     </div>
