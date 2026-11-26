@@ -62,7 +62,7 @@ export const GUIDES: Guide[] = [
         "Notes in curly braces, like {smile}, are skipped, so a stage direction never stalls it.",
         "Prefer a steady scroll? Set the speed from 0.5x to 2x in quarter steps instead.",
       ] },
-      { type: "shot", src: "/shots/selfie.jpg", alt: "The selfie prompter with the script just under the camera during a take", caption: "The line you read sits just under the camera." },
+      { type: "shot", src: "/shots/selfie.webp", alt: "The selfie prompter during a take: the script on top, the line being read just under the camera, Follow my voice listening", caption: "The line you read sits just under the camera." },
       { type: "h2", id: "private", text: "Private by design" },
       { type: "p", parts: ["Recognition runs on the iPhone itself. The audio of your take is not uploaded to follow your place. Where your iPhone cannot recognise a language on the device, the feature does not run, rather than sending the audio away."] },
       { type: "h2", id: "after", text: "After the take" },
@@ -75,7 +75,7 @@ export const GUIDES: Guide[] = [
       { href: "/compare/promptsmart-alternative", label: "A PromptSmart Pro alternative" },
     ],
     published: D,
-    reviewed: D,
+    reviewed: "2026-11-27",
   },
   {
     kind: "features",
@@ -88,7 +88,7 @@ export const GUIDES: Guide[] = [
     blocks: [
       { type: "h2", id: "eyes", text: "Where the words sit matters" },
       { type: "p", parts: ["The further the line you are reading sits below the camera, the further your eyes turn away from it. On an iPhone 17 Pro at arm's length (45 cm), a line in the centre of the screen turns your eyes 8.5° from the lens. Zen Teleprompter's reading line turns them 1.1°. ", { text: "The full measurements", href: "/blog/read-a-script-without-looking-like-it" }, "."] },
-      { type: "shot", src: "/shots/modes.jpg", alt: "Choosing the setup: Teleprompter, mirrored for glass, or Selfie-style, front camera with the script on top", caption: "Two ways to read: glass, or the front camera." },
+      { type: "shot", src: "/shots/selfie.webp", alt: "The selfie prompter during a take: the script on top of the front camera's picture, the line being read just under the lens", caption: "The line you read sits just under the lens." },
       { type: "h2", id: "record", text: "Recording a take" },
       { type: "steps", items: [
         { title: "Open a script", body: "Write one, import Text, RTF, PDF or Markdown, pull the article from a web page, or draft one with AI Script Studio." },
@@ -113,16 +113,16 @@ export const GUIDES: Guide[] = [
       { href: "/features/teleprompter-remote-apple-watch", label: "Teleprompter remote: Apple Watch and Bluetooth" },
     ],
     published: D,
-    reviewed: D,
+    reviewed: "2026-11-27",
   },
   {
     kind: "features",
     slug: "remove-filler-words-and-silences",
     h1: "Remove filler words, retakes and silences in one tap",
     title: "Remove filler words, retakes and silences from a video on iPhone",
-    description: "Fix everything finds your ums, false starts and dead air, shows each cut on the take report, and removes them in one tap. Each cut has its own switch.",
+    description: "Fix everything finds your ums, false starts and dead air, shows each step as it works, and removes them in one tap. Each cut has its own switch.",
     kicker: "Feature · Fix everything",
-    answer: "Open a take and tap Fix everything. It reads the whole take, marks every retake, silence and filler word on the take report, and cuts them in one pass. Your last try of each line stays. Every cut can be turned off before you export.",
+    answer: "Open a take and tap Fix everything. It reads the whole take, finds every retake, silence and filler word, and cuts them in one pass. Your last try of each line stays. Every cut can be turned off before you export.",
     blocks: [
       { type: "h2", id: "what", text: "What it cuts" },
       { type: "list", items: [
@@ -130,9 +130,10 @@ export const GUIDES: Guide[] = [
         "Silences. Dead air at the start and the end, and long pauses in the middle.",
         "Filler words. Um, uh and the rest are found by a rule first and cut only when the on-device model agrees.",
       ] },
-      { type: "shot", src: "/shots/take-report.jpg", alt: "The take report: a waveform with cuts, pauses and key moments, findings grouped Cut, Sound and Finish, and the length going from 1:27 to 1:23", caption: "The take report on a sample take: 1:27 to 1:23." },
+      { type: "shot", src: "/shots/shelves.webp", alt: "Making it studio-ready: Cut, Sound and Look ticked off, Story under way, Share next", caption: "Fix everything at work, one shelf at a time." },
       { type: "h2", id: "check", text: "Check every cut first" },
-      { type: "p", parts: ["The take report shows the waveform with each cut and pause marked, what was found, and the old and new length. If a pause was on purpose, turn that cut off. The rest stay."] },
+      { type: "p", parts: ["Review shows the new length and every fix, grouped Cut, Sound and Finish, each with its own switch. If a pause was on purpose, turn that cut off. The rest stay. In the editor, your take is a line of words: tap one to cut it."] },
+      { type: "shot", src: "/shots/editor.webp", alt: "The editor after Fix everything: 2:48 down to 2:05 with 9 fixes, the take as a line of words under the video", caption: "After Fix everything: 2:48 to 2:05, 9 fixes." },
       { type: "h2", id: "more", text: "And the rest of the edit" },
       { type: "p", parts: [`The same tap evens out your voice, adds music under it, karaoke captions, a cover, an opening title in one of ${THEMES.length} themes, zooms on the lines that matter, story moments and an ending card, then writes your post for Reels, TikTok and YouTube. Anything you already set stays as you set it.`] },
       { type: "h2", id: "imported", text: "Videos you filmed elsewhere" },
@@ -151,7 +152,7 @@ export const GUIDES: Guide[] = [
       { href: "/features/auto-captions", label: "Auto captions on iPhone" },
     ],
     published: D,
-    reviewed: D,
+    reviewed: "2026-11-27",
   },
   {
     kind: "features",
@@ -164,10 +165,11 @@ export const GUIDES: Guide[] = [
     blocks: [
       { type: "h2", id: "styles", text: "Karaoke or Normal" },
       { type: "p", parts: ["Karaoke is the default for new takes. It pulls the eye along with your voice, which suits short vertical videos. Normal shows the line plainly, for longer and calmer ones."] },
-      { type: "shot", src: "/shots/player.jpg", alt: "A finished take playing with captions on screen", caption: "Captions on a finished take." },
+      { type: "shot", src: "/shots/cinema.webp", alt: "The full-screen player: a finished take with a key phrase and captions", caption: "The full-screen player shows captions at the size they export." },
       { type: "h2", id: "accurate", text: "Why they come out right" },
       { type: "list", items: [
         "Captions can come from your script instead of from what you said, so names come out spelled the way you wrote them.",
+        "Your script's spelling and your own name are used where the speech matches them. Press and hold a misheard word on the track to fix it, once or everywhere in the take.",
         "Cut a word from the video and it leaves the captions too.",
         "They stay in sync at any playback speed.",
         "Imported videos get captions from what you said.",
@@ -184,7 +186,7 @@ export const GUIDES: Guide[] = [
       { href: "/help/export-and-post", label: "Help: export and copy your post words" },
     ],
     published: D,
-    reviewed: D,
+    reviewed: "2026-11-27",
   },
   {
     kind: "features",

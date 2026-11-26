@@ -201,6 +201,11 @@ html.js .rv:not(.in) { opacity: 0; transform: translateY(14px); }
   .devices { grid-template-columns: 1fr 1fr; gap: 20px 12px; }
   .devices .iphone, .writes .iphone { --pw: 100%; }
   .devices .dev:last-child { grid-column: 1 / -1; }
+  /* A third phone on its own row stays phone-sized rather than filling the width (27 Nov 2026). */
+  .devices .dev:nth-child(3):last-child .iphone { --pw: calc(50% - 6px); }
+  /* Two phones stay side by side; only an odd last one takes its own row (the /pt-br and /es hero
+     had one small phone and one full-width one, 27 Nov 2026). */
+  .devices .dev:nth-child(2):last-child { grid-column: auto; }
   .picker-phone .iphone { --pw: 230px; }
   .proud .iphone { --pw: 220px; }
   .len .num { font-size: 34px; }

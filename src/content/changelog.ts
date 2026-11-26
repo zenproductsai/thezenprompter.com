@@ -1,5 +1,5 @@
 // Every release, newest first, from the "Store notes" and summary lines of the app repo's
-// CHANGELOG.md (read 26 Nov 2026). Dates are the day the version was created in App Store Connect.
+// CHANGELOG.md (read 27 Nov 2026). Dates are the day the version was created in App Store Connect.
 // Internal-only lines (test subscriptions, maintenance on counting) are left out. Add the new
 // version here whenever the app's CHANGELOG gets one.
 
@@ -7,11 +7,28 @@ export type Release = { version: string; date: string; status?: string; notes: s
 
 export const RELEASES: Release[] = [
   {
+    version: "1.5.5",
+    date: "2026-11-27",
+    // Submitted to App Review on 27 Nov 2026. Remove this status once 1.5.5 is on the App Store.
+    // The 30% first-period offer is left out on purpose: it is shown only to eligible people in the
+    // app, and the site states no prices.
+    status: "In App Review",
+    notes: [
+      "A new editor: your video on top, and your take as a line of words, story moments and sound. Tap a word to cut it.",
+      "Fix everything shows each step on one screen as it finishes: Cut, Sound, Look, Story and Share.",
+      "Key phrases pop up word by word as you say them, glowing in your style's colour.",
+      "Press and hold a word to fix its spelling. Your name and your script's words are spelled right.",
+      "A full-screen player, with captions the same size as in your video.",
+      "Titles and pop-ups stay clear of your face.",
+      "Follow my voice scrolls more smoothly, and is on from the start.",
+      "Start shows both setups as pictures. Export shows the time left, and you can copy your post's words while it works.",
+      "On iPad, the editor sits in a centred column and the full-screen player fits the screen.",
+      "A softer zoom sound, and fixes for crashes on long takes.",
+    ],
+  },
+  {
     version: "1.5.4",
     date: "2026-11-26",
-    // Apple's lookup API still served 1.5.3 on 26 Nov 2026 (released 24 Nov). Remove this status
-    // once 1.5.4 is on the App Store.
-    status: "In App Review",
     notes: [
       "Fix everything now finishes your video: music, a cover, captions and the words for your post.",
       "Zooms land on the lines that matter.",

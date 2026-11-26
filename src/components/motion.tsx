@@ -109,8 +109,8 @@ export function HeroTake() {
         </div>
       </div>
       <div className="hero-phone">
-        <Phone label={done ? "The finished take: the presenter with a Slate opening title, drawn by the app" : "The app's take report for this take"}>
-          <Image src="/shots/take-report.jpg" alt="" fill sizes="(max-width: 600px) 56vw, 250px" className="fill layer before" />
+        <Phone label={done ? "The finished take: the presenter with a Slate opening title, drawn by the app" : "Fix everything at work: Cut, Sound and Look done, Story under way, Share next"}>
+          <Image src="/shots/shelves.webp" alt="" fill sizes="(max-width: 600px) 56vw, 250px" className="fill layer before" />
           <Image src="/renders/theme-02-slate-title.jpg" alt="" fill sizes="(max-width: 600px) 56vw, 250px" className="fill contain layer after" />
         </Phone>
         <div className="len">

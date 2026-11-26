@@ -73,7 +73,7 @@ export function appNode(description: string) {
     installUrl: APP_STORE_URL,
     sameAs: [APP_STORE_URL],
     image: `${SITE_URL}/icon.png`,
-    screenshot: ["/shots/script.jpg", "/shots/modes.jpg", "/shots/take-report.jpg", "/shots/studio.jpg"].map((s) => `${SITE_URL}${s}`),
+    screenshot: ["/shots/script.jpg", "/shots/prompter.webp", "/shots/editor.webp", "/shots/shelves.webp", "/shots/studio.jpg"].map((s) => `${SITE_URL}${s}`),
     description,
     featureList: [
       "Teleprompter with the reading line just under the camera",

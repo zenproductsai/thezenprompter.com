@@ -24,11 +24,10 @@ export default function LocalHome({ c }: { c: L }) {
           <p className="note">{c.note}</p>
         </div>
         <div className="devices" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
-          <div className="dev"><PhoneShot priority src="/shots/script.jpg" alt={c.alt.script} sizes="(max-width: 600px) 45vw, 240px" /></div>
-          <div className="dev"><PhoneShot src="/shots/take-report.jpg" alt={c.alt.report} sizes="(max-width: 600px) 45vw, 240px" /></div>
+          <div className="dev"><PhoneShot priority src={`${c.shots}/selfie.webp`} alt={c.alt.selfie} sizes="(max-width: 600px) 45vw, 240px" /></div>
+          <div className="dev"><PhoneShot src={`${c.shots}/shelves.webp`} alt={c.alt.shelves} sizes="(max-width: 600px) 45vw, 240px" /></div>
         </div>
       </section>
-      <p className="muted" style={{ fontSize: 14, marginTop: 12 }}>{c.englishShots}</p>
 
       <section className="rail" aria-labelledby="read-h">
         <div className="mark"><span className="tc y">00:00:31</span><span className="lbl">Teleprompter</span></div>
@@ -50,6 +49,11 @@ export default function LocalHome({ c }: { c: L }) {
               </section>
             ))}
           </div>
+          <div className="devices" style={{ marginTop: 32 }}>
+            {c.editShots.map((d) => (
+              <div className="dev" key={d.src}><PhoneShot src={`${c.shots}/${d.src}`} alt={d.alt} sizes="(max-width: 600px) 45vw, 240px" /><p className="cap">{d.cap}</p></div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -57,10 +61,6 @@ export default function LocalHome({ c }: { c: L }) {
         <div className="mark"><span className="tc y">00:01:40</span><span className="lbl">Script Studio</span></div>
         <div style={{ minWidth: 0 }}>
           <div className="head"><h2 className="disp d3" id="write-h">{c.write.h}</h2><p>{c.write.p}</p></div>
-          <div className="devices" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))", maxWidth: 520 }}>
-            <div className="dev"><PhoneShot src="/shots/modes.jpg" alt={c.alt.modes} sizes="(max-width: 600px) 45vw, 240px" /></div>
-            <div className="dev"><PhoneShot src="/shots/studio.jpg" alt={c.alt.studio} sizes="(max-width: 600px) 45vw, 240px" /></div>
-          </div>
         </div>
       </section>
 

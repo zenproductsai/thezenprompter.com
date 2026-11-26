@@ -48,7 +48,7 @@ const STEPS: StoryStep[] = [
     key: "cut", tc: "00:00:31 · Cut", title: "Stumbles out.",
     body: "It reads the whole take, then cuts what you would have cut. Your last try of every line stays.",
     items: ["Retakes", "Silence at both ends, long pauses", "Um, uh and the rest"],
-    screen: { kind: "img", src: "/shots/take-report.jpg", alt: "The take report: cuts, pauses and key moments marked, 1:27 down to 1:23" },
+    screen: { kind: "img", src: "/shots/editor.webp", alt: "The editor: the video on top and the take as a line of words, 2:48 down to 2:05 after 9 fixes. Tap a word to cut it." },
   },
   {
     key: "sound", tc: "00:00:44 · Sound", title: "Sounds like you, on a good day.",
@@ -58,15 +58,15 @@ const STEPS: StoryStep[] = [
   },
   {
     key: "finish", tc: "00:00:58 · Finish", title: "Looks finished.",
-    body: "Karaoke captions, a cover, an opening title, story moments and an ending card. Each one has its own switch.",
-    items: ["Karaoke captions", "A title in one of 12 themes", "Story moments in Slate or Glow"],
+    body: "Karaoke captions, key phrases, a cover, an opening title, story moments and an ending card. Titles and pop-ups stay clear of your face. Each one has its own switch.",
+    items: ["Karaoke captions", "Key phrases that pop as you say them", "A title in one of 12 themes"],
     screen: { kind: "render", src: "/renders/story-slate-number.jpg", alt: "A Slate story moment: a full-screen number card, drawn by the app" },
   },
   {
     key: "post", tc: "00:01:12 · Post", title: "Ready to post.",
     body: "The words for your post, written from what the video keeps, for each platform. Copy, share, done.",
     items: ["Reels", "TikTok", "YouTube"],
-    screen: { kind: "render", src: "/renders/theme-02-slate-ending.jpg", alt: "A Slate ending card on the finished video, drawn by the app" },
+    screen: { kind: "img", src: "/shots/export.webp", alt: "The Export sheet: Ready, Save to Photos, Share to an app, and the words for your post for YouTube and Reels" },
   },
 ];
 
@@ -133,6 +133,21 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="rail rv" aria-labelledby="edit-h">
+        <div className="mark"><span className="tc y">00:01:05</span><span className="lbl">The editor</span></div>
+        <div style={{ minWidth: 0 }}>
+          <div className="head">
+            <h2 className="disp d3" id="edit-h">Your take, as words.</h2>
+            <p>The video sits on top and the take runs under it as a line of words. Change anything Fix everything did, or do it yourself. On iPhone and iPad.</p>
+          </div>
+          <div className="devices">
+            <div className="dev rv" style={{ ["--d" as string]: 0 }}><PhoneShot src="/shots/styles.webp" alt="Pick your style: the title on the take, styles Slate, Glow, Clapper and Outline, and colours" /><p className="cap">One style for title, key phrases and ending.</p></div>
+            <div className="dev rv" style={{ ["--d" as string]: 1 }}><PhoneShot src="/shots/spelling.webp" alt="Fix spelling: a misheard name held on the track and typed right, with Fix everywhere in this take" /><p className="cap">Hold a word to fix its spelling.</p></div>
+            <div className="dev rv" style={{ ["--d" as string]: 2 }}><PhoneShot src="/shots/cinema.webp" alt="The full-screen player showing the finished take with a key phrase and captions" /><p className="cap">Full screen, captions true to size.</p></div>
+          </div>
+        </div>
+      </section>
+
       <Rail tc="00:01:20" label="Make it yours" title="Twelve looks. Your words." lead="Tap a theme. Every picture below was drawn by the app over a real take." id="looks">
         <RenderPicker />
       </Rail>
@@ -146,11 +161,11 @@ export default function Home() {
           </div>
           <div className="devices">
             <div className="dev rv" style={{ ["--d" as string]: 0 }}><PhoneShot src="/shots/script.jpg" alt="A script open and ready to read, with Start teleprompter" /><p className="cap">Your script, ready to read.</p></div>
-            <div className="dev rv" style={{ ["--d" as string]: 1 }}><PhoneShot src="/shots/modes.jpg" alt="Choosing the setup: Teleprompter, mirrored for glass, or Selfie-style, front camera with the script on top" /><p className="cap">Glass or front camera.</p></div>
+            <div className="dev rv" style={{ ["--d" as string]: 1 }}><PhoneShot src="/shots/prompter.webp" alt="The teleprompter mid-read with Follow my voice listening: the words already said turn gold" /><p className="cap">It scrolls as you speak.</p></div>
             <div className="dev rv" style={{ ["--d" as string]: 2 }}><Cycle device="watch" frames={WATCH} sizes="200px" /></div>
           </div>
           <div className="kv" style={{ marginTop: 32 }}>
-            <div><b>Follow my voice</b><span>Moves when you speak, waits when you stop. Recognised on your iPhone.</span></div>
+            <div><b>Follow my voice</b><span>Glides when you speak, waits when you stop. On from the start, recognised on your iPhone.</span></div>
             <div><b>Speed</b><span>0.5x to 2x in quarter steps.</span></div>
             <div><b>Remotes</b><span>Apple Watch, and Bluetooth teleprompter remotes. Press twice to change chapter.</span></div>
             <div><b>Languages</b><span><b className="count" data-count={LANGUAGES.length}>{LANGUAGES.length}</b>, and it listens in your script&apos;s language.</span></div>

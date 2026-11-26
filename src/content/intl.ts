@@ -33,8 +33,10 @@ export type LocalHome = {
   write: { h: string; p: string };
   plans: { h: string; p: string; steps: { b: string; t: string }[] };
   faq: { q: string; a: string }[];
-  alt: { script: string; modes: string; report: string; studio: string };
-  englishShots: string;
+  /** This language's app screens (1.5.5 replicas, words from the app's own Localizable.strings). */
+  shots: string;
+  alt: { selfie: string; shelves: string };
+  editShots: { src: string; alt: string; cap: string }[];
   contact: string;
 };
 
@@ -52,7 +54,7 @@ export const PT: LocalHome = {
     h: "Leia sem desviar o olhar.",
     p: "A linha que você está lendo fica logo abaixo da câmera, então seus olhos continuam na lente.",
     points: [
-      { b: "Seguir minha voz", t: "O roteiro anda quando você fala e espera quando você para. O reconhecimento acontece no seu iPhone." },
+      { b: "Seguir minha voz", t: "O roteiro desliza quando você fala e espera quando você para. Vem ligado desde o início, e o reconhecimento acontece no seu iPhone." },
       { b: "Dois modos", t: "Teleprompter, espelhado para o vidro de teleprompter, ou Prompter estilo selfie, com a câmera frontal e o roteiro por cima." },
       { b: "Velocidade", t: "De 0,5x a 2x." },
       { b: "Controles", t: "Apple Watch e controles Bluetooth de teleprompter." },
@@ -64,7 +66,7 @@ export const PT: LocalHome = {
     groups: [
       { h: "Corta", items: ["Repetições: a sua última tentativa fica", "Silêncios no começo, no fim e nas pausas longas", "Vícios de linguagem, como hã e é..."] },
       { h: "Som", items: ["Volume da voz equilibrado", "Música escolhida para o clima, por baixo da voz"] },
-      { h: "Acabamento", items: ["Legendas karaokê: cada palavra acende quando você fala", "Uma capa", `Título de abertura em ${THEMES.length} temas`, "Zooms nas falas que importam", "Momentos de história", "Cartão final"] },
+      { h: "Acabamento", items: ["Legendas karaokê: cada palavra acende quando você fala", "Uma capa", `Título de abertura em ${THEMES.length} temas`, "Zooms nas falas que importam", "Frases-chave que aparecem enquanto você fala", "Momentos de história", "Cartão final"] },
       { h: "Escreve", items: ["O texto do post para Reels, TikTok e YouTube"] },
     ],
   },
@@ -88,13 +90,16 @@ export const PT: LocalHome = {
     { q: "Como funciona o teste grátis?", a: "São 3 dias com tudo liberado. Avisamos no dia 2. Cancele na sua conta Apple antes do fim do teste e você não paga nada." },
     { q: "Em quais aparelhos funciona?", a: "iPhone e iPad com iOS 17 ou mais recente, e Apple Watch como controle remoto." },
   ],
+  shots: "/shots/pt-br",
   alt: {
-    script: "Um roteiro aberto e pronto para ler no app",
-    modes: "A escolha do modo: Teleprompter para o vidro ou estilo selfie com a câmera frontal",
-    report: "O relatório do take com os cortes e pausas marcados, de 1:27 para 1:23",
-    studio: "O Script Studio com IA com um briefing, um tamanho e um tom",
+    selfie: "O Prompter estilo selfie durante um take: o roteiro por cima da câmera frontal, a linha lida logo abaixo da lente, Ouvindo",
+    shelves: "Deixando com cara de estúdio: Cortar, Som e Visual prontos, História em andamento, Compartilhar em seguida",
   },
-  englishShots: "As telas abaixo são do app em inglês. No seu iPhone, o app aparece em português.",
+  editShots: [
+    { src: "editor.webp", alt: "O editor depois de Corrigir tudo: de 2:48 para 2:05 com 9 correções, o take como uma linha de palavras", cap: "Toque numa palavra para cortá-la." },
+    { src: "spelling.webp", alt: "Corrigir grafia: um nome mal ouvido, segurado na faixa e digitado certo, com Corrigir em todo este take", cap: "Segure uma palavra para corrigir a grafia." },
+    { src: "styles.webp", alt: "Escolha seu estilo: o título no take, os estilos Lousa, Brilho, Claquete e Contorno, e as cores", cap: "Um estilo para título, frases-chave e encerramento." },
+  ],
   contact: "Dúvidas? Escreva para o fundador: hello@zenproducts.ai. Respondemos em até 24 horas.",
 };
 
@@ -112,7 +117,7 @@ export const ES: LocalHome = {
     h: "Lee sin apartar la mirada.",
     p: "La línea que estás leyendo queda justo debajo de la cámara, así tus ojos siguen en el lente.",
     points: [
-      { b: "Seguir mi voz", t: "El guion avanza cuando hablas y espera cuando te detienes. El reconocimiento ocurre en tu iPhone." },
+      { b: "Seguir mi voz", t: "El guion se desliza cuando hablas y espera cuando te detienes. Viene activado desde el inicio, y el reconocimiento ocurre en tu iPhone." },
       { b: "Dos modos", t: "Teleprompter, en espejo para el cristal de teleprompter, o Estilo selfie, con la cámara frontal y el guion encima." },
       { b: "Velocidad", t: "De 0.5x a 2x." },
       { b: "Controles", t: "Apple Watch y controles Bluetooth de teleprompter." },
@@ -124,7 +129,7 @@ export const ES: LocalHome = {
     groups: [
       { h: "Corta", items: ["Repeticiones: tu último intento se queda", "Silencios al inicio, al final y en las pausas largas", "Muletillas, como eh y este..."] },
       { h: "Sonido", items: ["Volumen de la voz parejo", "Música elegida para el ambiente, debajo de tu voz"] },
-      { h: "Acabado", items: ["Subtítulos karaoke: cada palabra se ilumina al decirla", "Una portada", `Título inicial en ${THEMES.length} temas`, "Zooms en las frases que importan", "Momentos de historia", "Tarjeta final"] },
+      { h: "Acabado", items: ["Subtítulos karaoke: cada palabra se ilumina al decirla", "Una portada", `Título inicial en ${THEMES.length} temas`, "Zooms en las frases que importan", "Frases clave que aparecen mientras las dices", "Momentos de historia", "Tarjeta final"] },
       { h: "Escribe", items: ["El texto de tu publicación para Reels, TikTok y YouTube"] },
     ],
   },
@@ -148,12 +153,15 @@ export const ES: LocalHome = {
     { q: "¿Cómo funciona la prueba gratis?", a: "Tienes 3 días con todo desbloqueado. Te avisamos el día 2. Cancela en tu cuenta de Apple antes de que termine la prueba y no pagas nada." },
     { q: "¿En qué dispositivos funciona?", a: "iPhone y iPad con iOS 17 o posterior, y Apple Watch como control remoto." },
   ],
+  shots: "/shots/es",
   alt: {
-    script: "Un guion abierto y listo para leer en la app",
-    modes: "La elección del modo: Teleprompter para el cristal o estilo selfie con la cámara frontal",
-    report: "El reporte de la toma con los cortes y pausas marcados, de 1:27 a 1:23",
-    studio: "El Estudio de guion IA con una idea, una duración y un tono",
+    selfie: "El prompter estilo selfie durante una toma: el guion encima de la cámara frontal, la línea que lees justo debajo del lente, Escuchando",
+    shelves: "Dejándolo como de estudio: Cortar, Sonido y Aspecto listos, Historia en curso, Compartir después",
   },
-  englishShots: "Las pantallas de abajo son de la app en inglés. En tu iPhone, la app aparece en español.",
+  editShots: [
+    { src: "editor.webp", alt: "El editor después de Arreglar todo: de 2:48 a 2:05 con 9 arreglos, la toma como una línea de palabras", cap: "Toca una palabra para cortarla." },
+    { src: "spelling.webp", alt: "Corregir ortografía: un nombre mal oído, mantenido en la pista y escrito bien, con Corregir en toda esta toma", cap: "Mantén pulsada una palabra para corregirla." },
+    { src: "styles.webp", alt: "Elige tu estilo: el título en la toma, los estilos Pizarra, Brillo, Claqueta y Contorno, y los colores", cap: "Un estilo para el título, las frases clave y el cierre." },
+  ],
   contact: "¿Preguntas? Escribe al fundador: hello@zenproducts.ai. Respondemos en menos de 24 horas.",
 };

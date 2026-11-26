@@ -51,7 +51,7 @@ export const THEMES = [
   "Stack", "Frosted", "Word by word", "Serif", "Sticker", "Typewriter",
 ] as const;
 
-// Fix everything, grouped the way the app's take report groups it: Cut, Sound, Finish.
+// Fix everything, grouped the way the app's Review sheet groups it: Cut, Sound, Finish (1.5.5).
 export const FIX = {
   cut: [
     { t: "Retakes", d: "Lines you said twice. Your last try stays." },
@@ -67,6 +67,7 @@ export const FIX = {
     { t: "A cover", d: "The best frame of the take." },
     { t: "An opening title", d: "In one of 12 themes." },
     { t: "Zooms", d: "On the lines that matter." },
+    { t: "Key phrases", d: "Your words that matter pop up as you say them." },
     { t: "Story moments", d: "Number cards and key words behind you." },
     { t: "An ending card", d: "To close the video." },
   ],
