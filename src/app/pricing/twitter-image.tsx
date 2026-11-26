@@ -1,6 +1,6 @@
 import { OG_SIZE, renderOg } from "@/lib/og";
 
-export const alt = "Zen Teleprompter. 3 days free. Then one plan.";
+export const alt = "Zen Teleprompter: Video Editor. 3 days free. Then one plan.";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 

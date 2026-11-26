@@ -302,3 +302,13 @@ a:not(.key):not(.brand):has(> .ic:last-child) { display: inline-block; padding-b
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* The App Store name, "Zen Teleprompter: Video Editor" (his ask, 26 Nov 2026). One line where it
+   fits; on phones "Video Editor" drops to a smaller second line so the menu button keeps its room. */
+.brand-name { display: inline; }
+.brand-sub { white-space: nowrap; }
+@media (max-width: 600px) {
+  .brand-name { display: inline-grid; line-height: 1; gap: 2px; }
+  .brand-sub { font-size: 0.68em; letter-spacing: 0.14em; color: var(--muted); }
+  .brand-colon { display: none; }
+}

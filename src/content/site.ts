@@ -3,7 +3,7 @@
 // CLAUDE.md, the en Localizable.strings) on 26 Nov 2026.
 
 export const SITE_URL = "https://thezenprompter.com";
-export const SITE_NAME = "Zen Teleprompter";
+export const SITE_NAME = "Zen Teleprompter: Video Editor";
 export const APP_ID = "6761758929";
 // The full listing URL from Apple's lookup API (26 Nov 2026). On zenpasswords.com the short form
 // (apps.apple.com/app/id…) showed "An Error Occurred" in Chrome, so the full one is used here too.

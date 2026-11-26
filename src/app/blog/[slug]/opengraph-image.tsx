@@ -1,7 +1,7 @@
 import { POSTS, findPost } from "@/content/posts";
 import { OG_SIZE, renderOg } from "@/lib/og";
 
-export const alt = "Zen Teleprompter blog";
+export const alt = "Zen Teleprompter: Video Editor blog";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 

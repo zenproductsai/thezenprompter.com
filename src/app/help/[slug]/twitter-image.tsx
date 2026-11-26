@@ -1,7 +1,7 @@
 import { HELP, findHelp } from "@/content/help";
 import { OG_SIZE, renderOg } from "@/lib/og";
 
-export const alt = "Zen Teleprompter help";
+export const alt = "Zen Teleprompter: Video Editor help";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 

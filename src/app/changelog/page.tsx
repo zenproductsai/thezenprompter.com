@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: "What's new",
   description: DESC,
   alternates: { canonical: "/changelog" },
-  openGraph: { title: "What's new · Zen Teleprompter", description: DESC, url: "/changelog" },
-  twitter: { title: "What's new · Zen Teleprompter", description: DESC },
+  openGraph: { title: "What's new · Zen Teleprompter: Video Editor", description: DESC, url: "/changelog" },
+  twitter: { title: "What's new · Zen Teleprompter: Video Editor", description: DESC },
 };
 
 export default function Changelog() {

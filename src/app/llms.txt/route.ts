@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 // A plain-text summary for AI assistants (llmstxt.org), built from the same facts as the pages.
 export function GET() {
-  const body = `# Zen Teleprompter
+  const body = `# Zen Teleprompter: Video Editor
 
 > A teleprompter and one-tap video editor for iPhone and iPad. The script sits on a reading line just under the camera, and Follow my voice moves it as you speak. After the take, Fix everything cuts retakes, silences and filler words, evens out the voice, and adds karaoke captions, music, a cover, an opening title (${THEMES.length} themes), zooms, story moments and an ending card, then writes the post for Reels, TikTok and YouTube. Each change has its own switch.
 

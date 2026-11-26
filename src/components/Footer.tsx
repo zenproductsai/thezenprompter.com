@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="cols">
           <div style={{ display: "grid", gap: 12, alignContent: "start" }}>
-            <Link className="brand" href="/"><Image src="/icon.png" alt="" width={32} height={32} />Zen Teleprompter</Link>
+            <Link className="brand" href="/"><Image src="/icon.png" alt="" width={32} height={32} /><span className="brand-name">Zen Teleprompter<span className="brand-sub"><span className="brand-colon">:</span> Video Editor</span></span></Link>
             <p className="muted" style={{ maxWidth: "28em" }}>Read it under the lens. Record it. One tap finishes it. For iPhone and iPad, with Apple Watch as a remote.</p>
           </div>
           <div>

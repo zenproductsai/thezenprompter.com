@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title: "Blog",
   description: DESC,
   alternates: { canonical: "/blog" },
-  openGraph: { title: "Blog · Zen Teleprompter", description: DESC, url: "/blog" },
-  twitter: { title: "Blog · Zen Teleprompter", description: DESC },
+  openGraph: { title: "Blog · Zen Teleprompter: Video Editor", description: DESC, url: "/blog" },
+  twitter: { title: "Blog · Zen Teleprompter: Video Editor", description: DESC },
 };
 
 export default function Blog() {

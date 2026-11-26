@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title: "Contact",
   description: DESC,
   alternates: { canonical: "/contact" },
-  openGraph: { title: "Write to the Founder · Zen Teleprompter", description: DESC, url: "/contact" },
-  twitter: { title: "Write to the Founder · Zen Teleprompter", description: DESC },
+  openGraph: { title: "Write to the Founder · Zen Teleprompter: Video Editor", description: DESC, url: "/contact" },
+  twitter: { title: "Write to the Founder · Zen Teleprompter: Video Editor", description: DESC },
 };
 
 export default function Contact() {

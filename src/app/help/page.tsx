@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: "Help centre",
   description: DESC,
   alternates: { canonical: "/help" },
-  openGraph: { title: "Help centre · Zen Teleprompter", description: DESC, url: "/help" },
-  twitter: { title: "Help centre · Zen Teleprompter", description: DESC },
+  openGraph: { title: "Help centre · Zen Teleprompter: Video Editor", description: DESC, url: "/help" },
+  twitter: { title: "Help centre · Zen Teleprompter: Video Editor", description: DESC },
 };
 
 export default function HelpPage() {

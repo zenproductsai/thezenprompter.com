@@ -51,7 +51,7 @@ export default function DocPage({ crumbs, kicker, h1, answer, path, type, publis
             </div>
           )}
           <div className="box">
-            <b>Zen Teleprompter</b>
+            <b>Zen Teleprompter: Video Editor</b>
             <p className="muted">Read under the lens. One tap finishes the take. 3 days free.</p>
             <a className="key sm" style={{ justifySelf: "start" }} href={APP_STORE_URL} target="_blank" rel="noopener"><Icon name="download-simple" />Get the app</a>
           </div>

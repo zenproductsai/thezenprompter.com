@@ -1,20 +1,19 @@
 import Image from "next/image";
 
 /**
- * Generic phone and watch hardware, drawn in CSS only (no product photos, no logos), around real
- * app screens. Proportions follow a 6.3 inch phone: screen 1206 x 2622, island 31% of the screen
- * width and 2.7% down, so a capture's status bar sits either side of it as on the device.
+ * The phone is Apple's real iPhone 17 Pro product bezel (Deep Blue) laid over a masked screen; the
+ * Watch is composited offline (public/watch/*-device.webp). Both from Apple's product bezels, used
+ * to show this app on Apple hardware.
  */
 export function Phone({ children, className = "", label }: { children: React.ReactNode; className?: string; label?: string }) {
   return (
     <div className={`iphone ${className}`} role={label ? "img" : undefined} aria-label={label}>
-      <span className="btn-l" aria-hidden="true" />
-      <span className="btn-r" aria-hidden="true" />
       <div className="screen">
         {children}
-        <span className="island" aria-hidden="true" />
         <span className="glare" aria-hidden="true" />
       </div>
+      {/* Apple's iPhone 17 Pro bezel, Deep Blue (public/devices, from the Device Mockups set). */}
+      <img className="bezel" src="/devices/iphone-17-pro-deep-blue.webp" alt="" aria-hidden="true" width={750} height={1533} decoding="async" draggable={false} />
     </div>
   );
 }

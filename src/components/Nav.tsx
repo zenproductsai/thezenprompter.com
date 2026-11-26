@@ -22,9 +22,9 @@ export default function Nav() {
   return (
     <header className="top">
       <div className="wrap nav">
-        <Link className="brand" href="/" aria-label="Zen Teleprompter, home">
+        <Link className="brand" href="/" aria-label="Zen Teleprompter: Video Editor, home">
           <Image src="/icon.png" alt="" width={32} height={32} priority />
-          Zen Teleprompter
+          <span className="brand-name">Zen Teleprompter<span className="brand-sub"><span className="brand-colon">:</span> Video Editor</span></span>
         </Link>
         <nav className="links" aria-label="Main">
           {LINKS.map((l) => <Link key={l.href} href={l.href} aria-current={current(l.href)}>{l.label}</Link>)}

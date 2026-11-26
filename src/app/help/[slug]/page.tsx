@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: a.title,
     description: a.answer,
     alternates: { canonical: helpHref(a) },
-    openGraph: { type: "article", title: `${a.title} · Zen Teleprompter`, description: a.answer, url: helpHref(a), modifiedTime: a.reviewed },
-    twitter: { title: `${a.title} · Zen Teleprompter`, description: a.answer },
+    openGraph: { type: "article", title: `${a.title} · Zen Teleprompter: Video Editor`, description: a.answer, url: helpHref(a), modifiedTime: a.reviewed },
+    twitter: { title: `${a.title} · Zen Teleprompter: Video Editor`, description: a.answer },
   };
 }
 

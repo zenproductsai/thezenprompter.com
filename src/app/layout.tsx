@@ -18,7 +18,7 @@ const DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "Zen Teleprompter · Teleprompter and one-tap video editor for iPhone", template: "%s · Zen Teleprompter" },
+  title: { default: "Zen Teleprompter: Video Editor · Teleprompter and one-tap editing for iPhone", template: "%s · Zen Teleprompter: Video Editor" },
   description: DESCRIPTION,
   applicationName: SITE_NAME,
   alternates: { canonical: "/" },

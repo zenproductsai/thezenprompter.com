@@ -25,7 +25,7 @@ export async function renderOg(kicker: string, title: string) {
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: "#0b0b0b", color: "#f4f4f1", fontFamily: "Barlow", padding: "56px 68px 44px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 36, textTransform: "uppercase", letterSpacing: 1 }}>
           <img src={iconSrc} width={60} height={60} style={{ borderRadius: 14 }} alt="" />
-          Zen Teleprompter
+          Zen Teleprompter: Video Editor
         </div>
         <div style={{ display: "flex", marginTop: 46, fontSize: 30, color: "#ffdd00", letterSpacing: 4, textTransform: "uppercase" }}>{kicker}</div>
         <div style={{ display: "flex", marginTop: 10, fontSize: size, lineHeight: 0.95, textTransform: "uppercase", maxWidth: 1060 }}>{title}</div>

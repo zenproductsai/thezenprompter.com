@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
   alternates: { canonical: "/pricing" },
-  openGraph: { title: `${TITLE} · Zen Teleprompter`, description: DESC, url: "/pricing" },
-  twitter: { title: `${TITLE} · Zen Teleprompter`, description: DESC },
+  openGraph: { title: `${TITLE} · Zen Teleprompter: Video Editor`, description: DESC, url: "/pricing" },
+  twitter: { title: `${TITLE} · Zen Teleprompter: Video Editor`, description: DESC },
 };
 
 const INCLUDED = [
@@ -29,7 +29,7 @@ const INCLUDED = [
 
 const PFAQ = [
   { q: "When am I charged?", a: "When the 3 free days end, unless you cancel before then. We remind you on day 2." },
-  { q: "How do I cancel?", a: "Settings on your iPhone, your name, Subscriptions, Zen Teleprompter. Cancelling keeps everything working until the period you paid for ends." },
+  { q: "How do I cancel?", a: "Settings on your iPhone, your name, Subscriptions, Zen Teleprompter: Video Editor. Cancelling keeps everything working until the period you paid for ends." },
   { q: "Is there a free plan?", a: "No. The app is paid, with 3 days free to try everything. If your plan ends, your scripts stay readable and your videos can still be saved to Photos." },
   { q: "Is the price the same everywhere?", a: "Prices here are in US dollars. The App Store shows the price in your country before you confirm." },
   { q: "Can I get the trial again?", a: "Apple decides who can still have a trial. If you have used it, the app offers the plans without one." },
