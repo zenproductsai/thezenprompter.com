@@ -276,6 +276,26 @@ footer.foot { margin-top: 120px; border-top: 1px solid var(--line); padding-bloc
   .price { font-size: 48px; }
   .split { grid-template-columns: 1fr 1fr; gap: 14px; }
 }
+/* Phone review fixes (26 Nov 2026, his "not polished on phone"). */
+/* A blog card's picture kept its 9:16 shape while filling the card's height, so the browser widened
+   it past its column and over the title. The card's column sets the width; the picture just fills. */
+.clip .shot { aspect-ratio: auto !important; width: 100%; }
+/* Whole app screens, never a crop that cuts a line in half. */
+.shot.phone { border-radius: 22px; max-width: 300px; }
+.pair .shot.phone { max-width: 260px; justify-self: center; width: 100%; }
+/* Footer and breadcrumb links big enough to tap. */
+.foot ul a { display: inline-block; padding-block: 6px; }
+.foot ul { gap: 2px; }
+.crumbs { flex-wrap: nowrap; min-width: 0; }
+.crumbs > span { min-width: 0; }
+.crumbs > span:last-child { overflow: hidden; }
+.crumbs [aria-current="page"] { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.crumbs a { padding-block: 8px; }
+/* Arrow links and the side lists: a full finger's height. */
+a:not(.key):not(.brand):has(> .ic:last-child) { display: inline-block; padding-block: 8px; }
+.side li a, .side a { display: inline-block; padding-block: 6px; }
+.toc a { display: inline-block; padding-block: 6px; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }

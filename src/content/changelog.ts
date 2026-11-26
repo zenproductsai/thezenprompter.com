@@ -9,7 +9,6 @@ export const RELEASES: Release[] = [
   {
     version: "1.5.4",
     date: "2026-11-26",
-    status: "In review",
     notes: [
       "Fix everything now finishes your video: music, a cover, captions and the words for your post.",
       "Zooms land on the lines that matter.",

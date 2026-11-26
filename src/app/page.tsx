@@ -38,7 +38,7 @@ export default function Home() {
             <div className="tf"><span className="tc">5 cuts in this example</span><span className="key sm" aria-hidden="true"><Icon name="sparkle" />Fix everything</span></div>
           </div>
           <div className="pair">
-            <Shot src="/shots/take-report.jpg" alt="The app's take report: cuts, pauses and key moments on the waveform, and the take going from 1:27 to 1:23" ratio="4 / 5" pos="50% 100%" priority sizes="(max-width: 600px) 100vw, 380px" />
+            <Shot className="phone" src="/shots/take-report.jpg" alt="The app's take report: cuts, pauses and key moments on the waveform, and the take going from 1:27 to 1:23" ratio="900 / 1956" priority sizes="(max-width: 600px) 70vw, 240px" />
             <div className="bin">
               <span className="lbl">In the app</span>
               <p style={{ fontSize: 15 }}>The take report shows what it found and the new length before anything changes.</p>
@@ -75,8 +75,8 @@ export default function Home() {
       <Rail tc="00:00:58" label="Teleprompter" title="Read without looking away." id="read">
         <div className="split">
           <div>
-            <Shot src="/shots/selfie.jpg" alt="The selfie prompter during a take, with the script right under the camera" pos="50% 0%" sizes="(max-width: 960px) 50vw, 300px" />
-            <p className="cap">Selfie: the script starts under the camera.</p>
+            <Shot className="phone" src="/shots/script.jpg" alt="A script open and ready to read, with Start teleprompter" ratio="900 / 1956" sizes="(max-width: 960px) 50vw, 300px" />
+            <p className="cap">Your script, ready to read.</p>
           </div>
           <div className="kv">
             <div><b>Reading line</b><span>Just under the camera, so your eyes stay on the lens.</span></div>
@@ -88,8 +88,8 @@ export default function Home() {
           </div>
           <div style={{ display: "grid", gap: 16 }}>
             <div>
-              <Shot src="/shots/mirrored.jpg" alt="Teleprompter mode with mirrored text for teleprompter glass" pos="50% 40%" ratio="3 / 4" sizes="220px" />
-              <p className="cap">Mirrored for glass.</p>
+              <Shot className="phone" src="/shots/modes.jpg" alt="Choosing the setup: teleprompter mirrored for glass, or the front camera with the script on top" ratio="900 / 1956" sizes="220px" />
+              <p className="cap">Two setups, one tap.</p>
             </div>
             <div>
               <Shot src="/shots/watch.jpg" alt="The Apple Watch remote" ratio="416 / 496" sizes="220px" />

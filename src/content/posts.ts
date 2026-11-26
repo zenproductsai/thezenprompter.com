@@ -26,7 +26,7 @@ export const POSTS: Post[] = [
     published: "2026-11-26",
     modified: "2026-11-26",
     minutes: 5,
-    shot: "/shots/selfie.jpg",
+    shot: "/shots/script.jpg",
     blocks: [
       { type: "p", parts: ["People read faces before they hear words. When your eyes drop to find the next line, the viewer sees it, even if they can't say what felt off. Two things fix it: where the words sit, and how they are written."] },
       { type: "h2", id: "distance", text: "Put the words next to the lens" },
