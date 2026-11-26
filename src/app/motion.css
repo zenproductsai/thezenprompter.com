@@ -1,0 +1,222 @@
+/* Devices, motion and the interactive pieces (emotional pass, 26 Nov 2026).
+   Timing: 200 to 450 ms, ease-out cubic-bezier(.23,1,.32,1), as measured on the reference sites.
+   Every hidden or unstruck starting state is scoped to html.js, so the page reads fully without
+   scripts, and reduced motion lands on the final state (see the end of this file). */
+:root { --ease: cubic-bezier(.23, 1, .32, 1); interpolate-size: allow-keywords; }
+
+/* ------------------------------------------------------------ phone frame */
+/* Screen 1206 x 2622 inside a 4% bezel: the frame is 1 : 2.08. Percent insets are of the frame. */
+.iphone {
+  --pw: 260px;
+  position: relative; width: var(--pw); max-width: 100%; aspect-ratio: 1 / 2.08; flex: none;
+  border-radius: 17% / 8.2%;
+  background: linear-gradient(145deg, #6e6e73 0%, #2c2c2e 22%, #1b1b1c 50%, #333336 78%, #7a7a7f 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22), 0 40px 60px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(0, 0, 0, .6);
+}
+.iphone::after { content: ""; position: absolute; inset: 0.55% 1.1%; border-radius: 16% / 7.8%; background: #050505; }
+.iphone .screen { position: absolute; inset: 1.92% 4%; z-index: 1; border-radius: 14% / 6.5%; overflow: hidden; background: #000; isolation: isolate; }
+.iphone .island { position: absolute; z-index: 3; top: 1.3%; left: 34.5%; width: 31%; height: 4.2%; border-radius: 999px; background: #000; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .04); }
+.iphone .glare, .awatch .glare { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: linear-gradient(118deg, rgba(255, 255, 255, .09) 0%, rgba(255, 255, 255, .02) 28%, rgba(255, 255, 255, 0) 42%); }
+.iphone .btn-l, .iphone .btn-r { position: absolute; z-index: 0; width: 1.1%; border-radius: 2px; }
+.iphone .btn-l { left: -0.9%; top: 17%; height: 22%; background: linear-gradient(to bottom, #55555a 0 12%, transparent 12% 30%, #55555a 30% 58%, transparent 58% 72%, #55555a 72% 100%); }
+.iphone .btn-r { right: -0.9%; top: 26%; height: 11%; background: #55555a; }
+.iphone .fill, .awatch .fill { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.iphone .fill.contain { object-fit: contain; object-position: center; }
+.iphone .layer, .awatch .layer { position: absolute; inset: 0; opacity: 0; transition: opacity .45s var(--ease); }
+.iphone .layer.on, .awatch .layer.on { opacity: 1; }
+.iphone video.fill { object-fit: contain; object-position: center; background: #000; }
+
+/* ------------------------------------------------------------ watch frame */
+.awatch { --ww: 190px; position: relative; width: var(--ww); max-width: 100%; padding-block: 22%; margin-inline: auto; }
+.awatch .case { position: relative; z-index: 1; aspect-ratio: 0.86; border-radius: 27% / 23%; padding: 7.5%; background: linear-gradient(150deg, #5d5d62, #232325 35%, #161617 60%, #3c3c40); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18), 0 30px 40px -24px rgba(0, 0, 0, .9); }
+.awatch .wscreen { position: relative; width: 100%; height: 100%; border-radius: 21% / 18%; overflow: hidden; background: #000; }
+.awatch .wband { position: absolute; left: 19%; width: 62%; height: 25%; background: linear-gradient(90deg, #121213, #262628 50%, #121213); }
+.awatch .wband-top { top: 0; border-radius: 10px 10px 2px 2px; clip-path: polygon(6% 0, 94% 0, 100% 100%, 0 100%); }
+.awatch .wband-bottom { bottom: 0; border-radius: 2px 2px 10px 10px; clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%); }
+.awatch .crown { position: absolute; z-index: 0; right: -4%; top: 34%; width: 6.5%; height: 13%; border-radius: 3px; background: repeating-linear-gradient(to bottom, #6a6a6f 0 2px, #3a3a3d 2px 4px); }
+.awatch .sidebtn { position: absolute; z-index: 0; right: -2%; top: 53%; width: 3.5%; height: 16%; border-radius: 2px; background: #47474b; }
+
+/* ---------------------------------------------------------------- cycler */
+.cycle { display: grid; justify-items: center; gap: 4px; }
+.cycle-hit { background: none; border: 0; padding: 0; cursor: pointer; color: inherit; display: block; width: 100%; }
+.cycle-hit .iphone { margin-inline: auto; }
+.dots { display: flex; gap: 0; justify-content: center; }
+.dots button { width: 32px; height: 32px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; padding: 0; }
+.dots button span { width: 8px; height: 8px; border-radius: 99px; background: var(--line); transition: width .3s var(--ease), background-color .3s var(--ease); }
+.dots button[aria-pressed="true"] span { width: 22px; background: var(--fill); }
+
+/* ------------------------------------------------------------------ hero */
+.hero { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); }
+.hero-take { display: grid; grid-template-columns: minmax(0, 1fr) 216px; gap: 22px; align-items: start; }
+.hero-take .take .tl { transition: background-color .25s var(--ease), padding .4s var(--ease), max-height .4s var(--ease), opacity .3s var(--ease); max-height: 120px; }
+.hero-take .take .tl.now { background: rgba(255, 221, 0, .07); }
+.hero-take .take .tl.now .tc { color: var(--fill); }
+.hero-take del, .strike-list span {
+  text-decoration: none; color: inherit;
+  background: linear-gradient(var(--cut), var(--cut)) no-repeat 0 58% / 0% 2px;
+  transition: background-size .38s var(--ease), color .38s var(--ease), max-width .4s var(--ease), opacity .3s var(--ease);
+}
+.hero-take del { display: inline-block; white-space: nowrap; max-width: 22ch; overflow: hidden; vertical-align: bottom; }
+.hero-take del.x { background-size: 100% 2px; color: var(--faint); }
+html:not(.js) .hero-take del { background-size: 100% 2px; color: var(--faint); }
+.hero-take.collapsed del { max-width: 0; opacity: 0; }
+.hero-take.collapsed .tl.col { max-height: 0; padding-block: 0; opacity: 0; overflow: hidden; }
+.fixkey { transition: transform .14s var(--ease), box-shadow .25s var(--ease), background-color .2s; }
+.fixkey.pressed { transform: scale(.94); box-shadow: 0 0 0 8px rgba(255, 221, 0, .22); }
+.hero-phone { display: grid; gap: 12px; justify-items: start; }
+.hero-phone .iphone { --pw: 216px; }
+.hero-phone .before { opacity: 1; }
+.hero-phone .after { opacity: 0; }
+.hero-take.done .hero-phone .before { opacity: 0; }
+.hero-take.done .hero-phone .after { opacity: 1; }
+.len { display: flex; align-items: baseline; gap: 10px; }
+.len .num { font-family: var(--font-display), sans-serif; font-weight: 800; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; }
+.len .was { white-space: nowrap; font-size: 13px; color: var(--faint); text-decoration: line-through; }
+.ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.ticks li { display: inline-flex; gap: 5px; align-items: center; font-size: 13px; font-weight: 600; padding: 4px 8px; border: 1px solid var(--line); background: var(--surface); transition: opacity .3s var(--ease), transform .3s var(--ease); }
+.ticks .ic { color: var(--fill); }
+html.js .hero-take:not(.done) .ticks li { opacity: 0; transform: translateY(4px); }
+
+/* -------------------------------------------------- the evening, struck out */
+.evening { min-width: 0; }
+.strike-list { list-style: none; margin: 0 0 28px; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.strike-list li { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: clamp(18px, 2vw, 22px); font-weight: 600; }
+.strike-list span { background-size: 100% 3px; color: var(--faint); }
+html.js .strike-list span { background-size: 0% 3px; color: var(--fg); }
+html.js .strike-list.in span { background-size: 100% 3px; color: var(--faint); transition-delay: calc(var(--i) * 160ms + 250ms); transition-duration: .42s; }
+
+/* karaoke: words go gold as they are reached, then settle, the way spoken words do on the prompter */
+.kara span { display: inline; }
+html.js .kara:not(.in) span { color: var(--faint); }
+html.js .kara.in span { animation: lit .5s var(--ease) both; animation-delay: calc(var(--i) * 150ms + var(--kd, 0ms)); }
+.relief { --kd: 1700ms; color: var(--fg); }
+@keyframes lit { 0% { color: var(--faint); } 45% { color: var(--fill); } 100% { color: var(--fg); } }
+
+/* ---------------------------------------------------------- scroll story */
+.story { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 56px; align-items: start; }
+.story-pin { position: sticky; top: 96px; display: grid; justify-items: center; gap: 14px; }
+.story-pin .iphone { --pw: 270px; }
+.story-dots { display: flex; gap: 6px; }
+.story-dots span { width: 8px; height: 8px; border-radius: 99px; background: var(--line); transition: width .3s var(--ease), background-color .3s; }
+.story-dots span.on { width: 22px; background: var(--fill); }
+.story-steps { list-style: none; margin: 0; padding: 0; }
+.story-steps > li { min-height: 64vh; display: grid; align-content: center; gap: 10px; padding-block: 24px; opacity: .38; transition: opacity .35s var(--ease); }
+.story-steps > li.on { opacity: 1; }
+.story-steps h3 { font-size: clamp(34px, 4vw, 52px); }
+.story-steps p { color: var(--muted); font-size: 18px; max-width: 30em; }
+.story-steps ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; }
+.story-steps ul li { display: flex; gap: 10px; align-items: baseline; }
+.story-steps ul .ic { color: var(--fill); }
+.story-inline { display: none; }
+
+/* --------------------------------------------------------- render picker */
+.picker { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 48px; align-items: center; }
+.picker-phone { display: grid; justify-items: center; gap: 4px; }
+.picker-phone .iphone { --pw: 280px; }
+.picker .fade { opacity: 1; }
+.picker .fade.top { animation: fadein .38s var(--ease) both; }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+.picker-ui { display: grid; gap: 18px; align-content: start; min-width: 0; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--surface); border: 1px solid var(--line); justify-self: start; }
+.seg button { min-height: 44px; padding: 8px 14px; background: none; border: 0; color: var(--muted); cursor: pointer; font: 700 15px/1 var(--font-display), sans-serif; letter-spacing: .1em; text-transform: uppercase; transition: background-color .2s var(--ease), color .2s; display: inline-flex; gap: 8px; align-items: center; }
+.seg button[aria-selected="true"], .seg button[aria-pressed="true"] { background: var(--fill); color: var(--on-fill); }
+.seg.small button { min-height: 40px; font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chipbtn { min-height: 40px; padding: 8px 13px; background: var(--surface); border: 1px solid var(--line); color: var(--fg); cursor: pointer; font: 600 14px/1.1 var(--font-text), sans-serif; transition: border-color .2s, background-color .2s var(--ease), transform .12s var(--ease); }
+.chipbtn:hover { border-color: var(--muted); }
+.chipbtn:active { transform: scale(.97); }
+.chipbtn[aria-pressed="true"] { background: var(--fill); color: var(--on-fill); border-color: var(--fill); }
+
+/* --------------------------------------------------------------- devices */
+.devices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: end; justify-items: center; }
+.devices .dev { display: grid; justify-items: center; gap: 4px; }
+.devices .iphone { --pw: 240px; }
+.writes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: center; justify-items: center; }
+.writes .iphone { --pw: 240px; }
+.write-copy { display: grid; gap: 10px; justify-self: stretch; }
+.write-copy h3 { display: flex; gap: 8px; align-items: center; font-family: var(--font-display), sans-serif; font-weight: 800; text-transform: uppercase; font-size: 24px; margin-top: 8px; }
+.write-copy h3 .ic { color: var(--fill); }
+.count { font-variant-numeric: tabular-nums; color: var(--fg); }
+
+/* ----------------------------------------------------------------- pride */
+.proud { margin-top: 120px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: center; padding: 48px; border: 1px solid var(--line); border-radius: var(--r);
+  background: radial-gradient(60% 80% at 85% 50%, rgba(255, 221, 0, .09), rgba(255, 221, 0, 0) 70%), var(--surface); }
+.proud .iphone { --pw: 270px; }
+.proud-copy { display: grid; gap: 16px; }
+.platforms { display: flex; gap: 8px; flex-wrap: wrap; }
+.platforms span { font-family: var(--font-display), sans-serif; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 14px; padding: 6px 10px; border: 1px solid var(--line); }
+
+/* ------------------------------------------------------- reveal, waves */
+html.js .rv { transition: opacity .42s var(--ease), transform .42s var(--ease); transition-delay: calc(var(--d, 0) * 80ms); }
+html.js .rv:not(.in) { opacity: 0; transform: translateY(14px); }
+.wave[data-live] rect { transform-box: fill-box; transform-origin: center; }
+.wave[data-live].on rect { animation: wv 1.1s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -53ms); }
+@keyframes wv { from { transform: scaleY(.5); } to { transform: scaleY(1); } }
+
+/* ------------------------------------------------------- buttons and nav */
+.key { transition: transform .12s var(--ease), background-color .15s, box-shadow .2s var(--ease); }
+.key:hover { box-shadow: 0 8px 24px -10px rgba(255, 221, 0, .55); }
+.links a { position: relative; box-shadow: none !important; }
+.links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--fill); transform: scaleX(0); transform-origin: left; transition: transform .25s var(--ease); }
+.links a:hover::after { transform: scaleX(.5); }
+.links a[aria-current="page"]::after { transform: scaleX(1); }
+
+/* FAQ opens with a height animation where the browser supports animating to auto. */
+.faq details::details-content { height: 0; overflow: clip; transition: height .32s var(--ease), content-visibility .32s allow-discrete; }
+.faq details[open]::details-content { height: auto; }
+
+/* Page transitions (React ViewTransition around <main>, class "page"): a short fade and rise. */
+::view-transition-old(.page) { animation: vt-out .14s ease-in both; }
+::view-transition-new(.page) { animation: vt-in .32s var(--ease) both; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(10px); } }
+
+/* ---------------------------------------------------------------- layout */
+@media (max-width: 1100px) {
+  .hero-take { grid-template-columns: minmax(0, 1fr) 190px; }
+  .hero-phone .iphone { --pw: 190px; }
+}
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .story { grid-template-columns: 1fr; gap: 0; }
+  .story-pin { display: none; }
+  .story-steps > li { min-height: 0; opacity: 1; padding-block: 28px; border-top: 1px solid var(--line); }
+  .story-inline { display: block; margin-top: 12px; }
+  .story-inline .iphone { --pw: 230px; margin-inline: auto; }
+  .picker { grid-template-columns: 1fr; gap: 24px; }
+  .writes { grid-template-columns: 1fr 1fr; }
+  .writes .write-copy { grid-column: 1 / -1; grid-row: 1; }
+  .proud { grid-template-columns: 1fr; padding: 28px 20px; }
+}
+@media (max-width: 600px) {
+  .hero-take { grid-template-columns: 1fr; }
+  .hero-phone { grid-template-columns: 170px minmax(0, 1fr); align-items: end; gap: 6px 16px; }
+  .hero-phone .iphone { --pw: 170px; grid-row: span 2; }
+  .strike-list { grid-template-columns: 1fr; }
+  .devices { grid-template-columns: 1fr 1fr; gap: 20px 12px; }
+  .devices .iphone, .writes .iphone { --pw: 100%; }
+  .devices .dev:last-child { grid-column: 1 / -1; }
+  .picker-phone .iphone { --pw: 230px; }
+  .proud .iphone { --pw: 220px; }
+  .len .num { font-size: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .rv:not(.in), html.js .rv { opacity: 1 !important; transform: none !important; }
+  html.js .strike-list span { background-size: 100% 3px; color: var(--faint); }
+  html.js .kara span, html.js .kara:not(.in) span { color: inherit; animation: none; }
+  html.js .hero-take:not(.done) .ticks li { opacity: 1; transform: none; }
+  ::view-transition-old(.page), ::view-transition-new(.page) { animation: none; }
+}
+
+/* Room between the timecode and the hero headline, and between karaoke lines, whose words are
+   separate boxes and touched at the display face's 0.92 leading (overlap check, 26 Nov 2026). */
+.hero-copy h1 { margin-top: 14px; }
+.kara.disp { line-height: 1.04; }
+
+/* A cut that follows a word carries its own space as a margin, so collapsing it leaves one space
+   and the uncollapsed (reduced motion, no script) line still reads "more um, than". */
+.hero-take del.lead { margin-left: .28em; transition-property: background-size, color, max-width, opacity, margin; }
+.hero-take.collapsed del.lead { margin-left: 0; }
+/* A grid cell holding only a phone shrank to nothing, and the phone with it (26 Nov 2026 check). */
+.writes > div, .devices > .dev { width: 100%; display: grid; justify-items: center; }

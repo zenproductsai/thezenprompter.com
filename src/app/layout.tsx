@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
+import { ViewTransition } from "react";
 import Nav from "@/components/Nav";
+import { Observer } from "@/components/motion";
 import Footer from "@/components/Footer";
 import { JsonLd } from "@/components/ui";
 import { APP_ID, APP_STORE_URL, LANGUAGES, PRICES, SITE_NAME, SITE_URL, SUPPORT_EMAIL } from "@/content/site";
 import "./globals.css";
+import "./motion.css";
 
 // The app's own faces: Barlow Condensed capitals for arrival headings, Inter for everything read.
 const display = Barlow_Condensed({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
@@ -55,12 +58,18 @@ const ORG = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${text.variable}`}>
+    <html lang="en" className={`${display.variable} ${text.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Marks that JavaScript runs before first paint. Only then do reveal and strike animations
+            start from a hidden or unstruck state, so the page reads in full without scripts. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
         <a className="skip" href="#main">Skip to content</a>
         <JsonLd data={ORG} />
         <Nav />
-        <main id="main">{children}</main>
+        <ViewTransition default="page"><main id="main">{children}</main></ViewTransition>
+        <Observer />
         <Footer />
       </body>
     </html>

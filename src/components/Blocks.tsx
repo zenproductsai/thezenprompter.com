@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Block, Inline } from "@/content/help";
 import type { Post } from "@/content/posts";
-import { Shot } from "./ui";
+import { PhoneShot } from "./devices";
+import { Cycle } from "./motion";
 
 function Parts({ parts }: { parts: Inline[] }) {
   return <>{parts.map((p, i) => (typeof p === "string" ? <span key={i}>{p}</span> : p.href.startsWith("/") ? <Link key={i} href={p.href}>{p.text}</Link> : <a key={i} href={p.href}>{p.text}</a>))}</>;
@@ -20,7 +21,14 @@ export default function Blocks({ blocks }: { blocks: Post["blocks"] | Block[] })
           case "note": return <div key={i} className="note"><b>{b.title}. </b>{b.body}</div>;
           case "shot": return (
             <figure key={i}>
-              <Shot src={b.src} alt={b.alt} sizes="300px" />
+              {b.src === "/shots/watch.jpg"
+                ? <Cycle device="watch" sizes="220px" frames={[
+                    { src: "/watch/watch-01-playing.jpg", alt: "Apple Watch remote, playing", label: "Playing" },
+                    { src: "/watch/watch-02-paused.jpg", alt: "Apple Watch remote, paused", label: "Paused" },
+                    { src: "/watch/watch-03-recording.jpg", alt: "Apple Watch remote while a take records", label: "Recording" },
+                    { src: "/watch/watch-04-sections.jpg", alt: "Apple Watch remote, sections", label: "Sections" },
+                  ]} />
+                : <PhoneShot src={b.src} alt={b.alt} sizes="260px" />}
               <figcaption className="cap">{b.caption}</figcaption>
             </figure>
           );

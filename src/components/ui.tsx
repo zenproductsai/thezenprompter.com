@@ -33,7 +33,7 @@ export function Shot({ src, alt, ratio = "9 / 16", pos = "top", priority = false
 }
 
 /** A deterministic waveform. Yellow bands mark cuts, the way the app's take report marks them. */
-export function Wave({ seed, cuts = [], height = 56, label }: { seed: number; cuts?: [number, number][]; height?: number; label?: string }) {
+export function Wave({ seed, cuts = [], height = 56, label, live = false }: { seed: number; cuts?: [number, number][]; height?: number; label?: string; live?: boolean }) {
   let s = seed;
   const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
   const n = 90, w = 1000 / n;
@@ -41,10 +41,10 @@ export function Wave({ seed, cuts = [], height = 56, label }: { seed: number; cu
     const cut = cuts.some(([a, b]) => k >= a && k < b);
     const amp = cut ? 0.12 + rnd() * 0.1 : 0.25 + rnd() * 0.7;
     const bh = amp * height * 0.9;
-    return <rect key={k} x={k * w + 1} y={(height - bh) / 2} width={w - 3} height={bh} rx={1} fill={cut ? "#85857d" : "#f4f4f1"} opacity={cut ? 0.45 : 0.85} />;
+    return <rect key={k} style={{ ["--i" as string]: k }} x={k * w + 1} y={(height - bh) / 2} width={w - 3} height={bh} rx={1} fill={cut ? "#85857d" : "#f4f4f1"} opacity={cut ? 0.45 : 0.85} />;
   });
   return (
-    <svg className="wave" style={{ height }} viewBox={`0 0 1000 ${height}`} preserveAspectRatio="none" role={label ? "img" : undefined} aria-label={label} aria-hidden={label ? undefined : true}>
+    <svg className="wave" data-live={live ? "" : undefined} style={{ height }} viewBox={`0 0 1000 ${height}`} preserveAspectRatio="none" role={label ? "img" : undefined} aria-label={label} aria-hidden={label ? undefined : true}>
       {cuts.map(([a, b]) => (
         <g key={a}>
           <rect x={a * w} y={0} width={(b - a) * w} height={height} fill="#ffdd00" opacity={0.18} />
@@ -60,7 +60,7 @@ export function Wave({ seed, cuts = [], height = 56, label }: { seed: number; cu
 /** A section laid out like a point on the timeline: timecode and label on the left. */
 export function Rail({ tc, label, title, lead, children, id }: { tc: string; label: string; title: string; lead?: string; children: React.ReactNode; id?: string }) {
   return (
-    <section className="rail" id={id} aria-labelledby={id ? `${id}-h` : undefined}>
+    <section className="rail rv" id={id} aria-labelledby={id ? `${id}-h` : undefined}>
       <div className="mark"><span className="tc y">{tc}</span><span className="lbl">{label}</span></div>
       <div style={{ minWidth: 0 }}>
         <div className="head">
