@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Phone, WatchFrame } from "./devices";
+import { Phone } from "./devices";
 import { Icon } from "./ui";
 
 /* Motion values follow the references measured on 16 Sep 2026: short, decisive, ease-out
@@ -157,7 +157,7 @@ export function Cycle({ frames, device, interval = 2600, sizes = "240px", contai
   return (
     <div className="cycle" ref={box}>
       <button type="button" className="cycle-hit" onClick={() => go((i + 1) % frames.length)} aria-label={`Show the next screen: ${frames[(i + 1) % frames.length].label ?? ""}`}>
-        {device === "phone" ? <Phone>{layers}</Phone> : <WatchFrame>{layers}</WatchFrame>}
+        {device === "phone" ? <Phone>{layers}</Phone> : <div className="watch-real">{layers}</div>}
       </button>
       <div className="dots" role="group" aria-label="Screens">
         {frames.map((f, k) => (

@@ -220,3 +220,12 @@ html.js .rv:not(.in) { opacity: 0; transform: translateY(14px); }
 .hero-take.collapsed del.lead { margin-left: 0; }
 /* A grid cell holding only a phone shrank to nothing, and the phone with it (26 Nov 2026 check). */
 .writes > div, .devices > .dev { width: 100%; display: grid; justify-items: center; }
+
+/* The real Apple Watch (Series 11 46mm, Jet Black, Sport Band) from Apple's product bezels, with
+   each real Watch screen composited into its glass offline (public/watch/*-device.webp). His ask,
+   26 Nov 2026: a real mockup, not one drawn in CSS. */
+.watch-real { position: relative; width: 240px; max-width: 100%; aspect-ratio: 560 / 880; margin-inline: auto; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .55)); }
+.watch-real .layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .45s var(--ease); }
+.watch-real .layer.on { opacity: 1; }
+/* The cycler's tap target shrank to its content, which left the Watch 128 pt wide on the home page. */
+.cycle:has(.watch-real), .cycle:has(.watch-real) .cycle-hit { width: 100%; }

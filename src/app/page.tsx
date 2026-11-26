@@ -56,10 +56,10 @@ const STEPS: StoryStep[] = [
 ];
 
 const WATCH = [
-  { src: "/watch/watch-01-playing.jpg", alt: "Apple Watch remote, playing a script at 1.2x", label: "Playing" },
-  { src: "/watch/watch-02-paused.jpg", alt: "Apple Watch remote, paused", label: "Paused" },
-  { src: "/watch/watch-03-recording.jpg", alt: "Apple Watch remote while a take records", label: "Recording" },
-  { src: "/watch/watch-04-sections.jpg", alt: "Apple Watch remote, jumping between sections", label: "Sections" },
+  { src: "/watch/watch-01-playing-device.webp", alt: "Apple Watch remote, playing a script at 1.2x", label: "Playing" },
+  { src: "/watch/watch-02-paused-device.webp", alt: "Apple Watch remote, paused", label: "Paused" },
+  { src: "/watch/watch-03-recording-device.webp", alt: "Apple Watch remote while a take records", label: "Recording" },
+  { src: "/watch/watch-04-sections-device.webp", alt: "Apple Watch remote, jumping between sections", label: "Sections" },
 ];
 
 const PROUD = [
