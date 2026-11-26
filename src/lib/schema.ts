@@ -1,4 +1,4 @@
-import { APP_STORE_URL, LANGUAGES, PRICES, SITE_NAME, SITE_URL, SUPPORT_EMAIL } from "@/content/site";
+import { APP_STORE_URL, FOUNDER, LANGUAGES, PRICES, SITE_NAME, SITE_URL, SUPPORT_EMAIL } from "@/content/site";
 
 // Structured data as one graph with stable @ids, so pages reference the same Organization and app
 // instead of repeating anonymous copies (the 26 Nov audit found three unnamed Organization nodes
@@ -11,6 +11,20 @@ import { APP_STORE_URL, LANGUAGES, PRICES, SITE_NAME, SITE_URL, SUPPORT_EMAIL } 
 export const ORG_ID = `${SITE_URL}/#org`;
 export const SITE_ID = `${SITE_URL}/#site`;
 export const APP_ID_REF = `${SITE_URL}/#app`;
+export const FOUNDER_ID = `${SITE_URL}${FOUNDER.page}#founder`;
+
+// The person behind the posts. Articles name him as author (Google's article guidance: author
+// with a url to a page about them, and sameAs to profiles that identify them). Built once so the
+// /about page and every article describe the same Person with the same @id.
+export const founderNode = {
+  "@type": "Person",
+  "@id": FOUNDER_ID,
+  name: FOUNDER.name,
+  url: `${SITE_URL}${FOUNDER.page}`,
+  jobTitle: "Founder",
+  worksFor: { "@type": "Organization", "@id": ORG_ID, name: "Zen Products" },
+  sameAs: FOUNDER.profiles.map((p) => p.href),
+};
 
 // Zen Products' own profiles. Each was opened on 26 Nov 2026 (YouTube, Instagram and zenproducts.ai
 // returned the brand's page; LinkedIn and Product Hunt sit behind a bot wall, so they were checked
@@ -32,6 +46,7 @@ export const orgNode = {
   email: SUPPORT_EMAIL,
   contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: SUPPORT_EMAIL, availableLanguage: ["English", "Spanish", "Portuguese"] },
   sameAs: SAME_AS,
+  founder: { "@type": "Person", "@id": FOUNDER_ID, name: FOUNDER.name },
 };
 
 export const websiteNode = {

@@ -28,5 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...POSTS.map((p) => at(postHref(p), p.modified)),
     at("/changelog", latestReleaseDate()),
     at("/contact"),
+    at("/about"),
   ];
 }

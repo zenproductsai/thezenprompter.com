@@ -21,7 +21,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const g = findGuide("features", (await params).slug);
   if (!g) notFound();
   return (
-    <DocPage crumbs={[{ name: "Features", href: "/features" }, { name: g.h1, href: guideHref(g) }]} kicker={g.kicker} h1={g.h1} answer={g.answer}
+    <DocPage byFounder crumbs={[{ name: "Features", href: "/features" }, { name: g.h1, href: guideHref(g) }]} kicker={g.kicker} h1={g.h1} answer={g.answer}
       path={guideHref(g)} type="Article" published={g.published} modified={g.reviewed} description={g.description}
       headings={headingsOf(g.blocks)} related={g.related} relatedTitle="Read next">
       <Blocks blocks={g.blocks} />

@@ -1,14 +1,18 @@
 import Link from "next/link";
-import { APP_STORE_URL, SITE_URL, fmtDate } from "@/content/site";
+import { APP_STORE_URL, FOUNDER, SITE_URL, fmtDate } from "@/content/site";
 import { Crumbs, Icon, JsonLd, type Crumb } from "./ui";
-import { APP_ID_REF, ORG_ID, SITE_ID } from "@/lib/schema";
+import { APP_ID_REF, ORG_ID, SITE_ID, founderNode } from "@/lib/schema";
 
 /** The frame help articles and blog posts share: breadcrumbs, title, the direct answer, an
  *  on-this-page list, the body and a side column. Article schema is built here so no page forgets it. */
-export default function DocPage({ crumbs, kicker, h1, answer, path, type, published, modified, description, headings, related, relatedTitle, children }: {
+export default function DocPage({ crumbs, kicker, h1, answer, path, type, published, modified, description, headings, related, relatedTitle, byFounder = false, children }: {
   crumbs: Crumb[]; kicker: string; h1: string; answer?: string; path: string; type: "BlogPosting" | "TechArticle" | "Article";
   published: string; modified: string; description: string; headings: { id: string; text: string }[];
-  related: { href: string; label: string }[]; relatedTitle: string; children: React.ReactNode;
+  related: { href: string; label: string }[]; relatedTitle: string;
+  /** Posts, feature and comparison pages are written by the founder and say so; help articles
+   *  stay with the company, since they document the app rather than argue a view. */
+  byFounder?: boolean;
+  children: React.ReactNode;
 }) {
   const url = `${SITE_URL}${path}`;
   const ld = {
@@ -24,7 +28,7 @@ export default function DocPage({ crumbs, kicker, h1, answer, path, type, publis
     isPartOf: { "@id": SITE_ID },
     about: { "@id": APP_ID_REF },
     // Named in full, not only by @id: Google reads each JSON-LD block on its own.
-    author: { "@type": "Organization", "@id": ORG_ID, name: "Zen Products", url: "https://www.zenproducts.ai/" },
+    author: byFounder ? founderNode : { "@type": "Organization", "@id": ORG_ID, name: "Zen Products", url: "https://www.zenproducts.ai/" },
     publisher: { "@type": "Organization", "@id": ORG_ID, name: "Zen Products", logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.png` } },
   };
   return (
@@ -34,6 +38,7 @@ export default function DocPage({ crumbs, kicker, h1, answer, path, type, publis
         <Crumbs items={crumbs} />
         <span className="tc y">{kicker} · {fmtDate(modified)}</span>
         <h1 className="disp d2">{h1}</h1>
+        {byFounder && <p className="byline">By <Link href={FOUNDER.page} rel="author">{FOUNDER.name}</Link>, founder of Zen Products</p>}
       </div>
       <div className="doc">
         <nav className="toc" aria-label="On this page">

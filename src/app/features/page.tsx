@@ -4,7 +4,7 @@ import { guideHref, guidesOf } from "@/content/guides";
 import { Crumbs, Icon } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 
-const DESC = "What Zen Teleprompter does, one job at a time: a teleprompter that follows your voice, selfie recording, one-tap cuts of filler words and silences, auto captions and remotes.";
+const DESC = "What Zen Teleprompter does: a teleprompter that follows your voice, selfie recording, one-tap cuts of filler words and silences, auto captions and remotes.";
 
 export const metadata: Metadata = pageMeta({ title: "Features: teleprompter, captions and one-tap edits", description: DESC, path: "/features" });
 

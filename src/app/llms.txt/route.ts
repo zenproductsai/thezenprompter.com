@@ -1,4 +1,4 @@
-import { APP_STORE_URL, FAQ, FIX, LANGUAGES, PRICES, PRIVACY_URL, SITE_URL, SUPPORT_EMAIL, THEMES } from "@/content/site";
+import { APP_STORE_URL, FAQ, FOUNDER, FIX, LANGUAGES, PRICES, PRIVACY_URL, SITE_URL, SUPPORT_EMAIL, THEMES } from "@/content/site";
 import { HELP, helpHref } from "@/content/help";
 import { POSTS, postHref } from "@/content/posts";
 import { GUIDES, guideHref } from "@/content/guides";
@@ -20,6 +20,7 @@ export function GET() {
 - AI: optional and off until the user agrees. Text goes through the developer's relay to Anthropic's Claude; the relay keeps counts, not text.
 - Privacy policy: ${PRIVACY_URL}
 - Support: ${SUPPORT_EMAIL}, answered within 24 hours
+- Made by: ${FOUNDER.name}, founder of Zen Products (${SITE_URL}${FOUNDER.page}). He writes the posts and guides on this site.
 
 ## What Fix everything does
 - Cut: ${FIX.cut.map((f) => f.t).join(", ")}
@@ -38,6 +39,7 @@ export function GET() {
 - [Blog](${SITE_URL}/blog)
 - [What's new](${SITE_URL}/changelog)
 - [Contact](${SITE_URL}/contact)
+- [About the founder](${SITE_URL}/about)
 
 ## Features and comparisons
 ${GUIDES.map((g) => `- [${g.h1}](${SITE_URL}${guideHref(g)}): ${g.answer}`).join("\n")}

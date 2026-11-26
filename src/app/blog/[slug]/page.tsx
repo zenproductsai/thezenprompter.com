@@ -22,7 +22,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!p) notFound();
   const related = POSTS.filter((x) => x.slug !== p.slug).map((x) => ({ href: postHref(x), label: x.title }));
   return (
-    <DocPage crumbs={[{ name: "Blog", href: "/blog" }, { name: p.title, href: postHref(p) }]} kicker={`${p.tag} · ${p.minutes} min`} h1={p.title}
+    <DocPage byFounder crumbs={[{ name: "Blog", href: "/blog" }, { name: p.title, href: postHref(p) }]} kicker={`${p.tag} · ${p.minutes} min`} h1={p.title}
       path={postHref(p)} type="BlogPosting" published={p.published} modified={p.modified} description={p.description}
       headings={headingsOf(p.blocks)} related={related} relatedTitle="More posts">
       <Blocks blocks={p.blocks} />

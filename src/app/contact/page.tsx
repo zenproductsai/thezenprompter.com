@@ -16,7 +16,7 @@ export default function Contact() {
         <Crumbs items={[{ name: "Contact", href: "/contact" }]} />
         <span className="tc y">Support</span>
         <h1 className="disp d2">Write to the Founder</h1>
-        <p className="lede">Read by me. Answered within 24 hours.</p>
+        <p className="lede">Read by me, <Link href="/about">Kumar Gaurav</Link>. Answered within 24 hours.</p>
       </div>
       <div className="track" style={{ marginTop: 32 }}>
         <div><span className="tc y">00:00</span><h2 className="disp" style={{ fontSize: 30 }}>You write</h2><p className="muted">By email, or from the app.</p></div>

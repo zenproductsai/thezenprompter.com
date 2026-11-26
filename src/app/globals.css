@@ -167,6 +167,9 @@ p { margin: 0; }
 
 /* pages with a header */
 .phead { padding-top: 40px; display: grid; gap: 14px; }
+.profiles { display: flex; flex-wrap: wrap; gap: 10px; }
+.byline { font-size: 14px; color: var(--muted); }
+.byline a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
 .crumbs { display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; color: var(--muted); align-items: center; }
 .crumbs a:hover { color: var(--fg); }
 .crumbs .ic { font-size: 11px; }

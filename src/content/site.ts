@@ -9,6 +9,20 @@ export const APP_ID = "6761758929";
 // (apps.apple.com/app/id…) showed "An Error Occurred" in Chrome, so the full one is used here too.
 export const APP_STORE_URL = `https://apps.apple.com/us/app/zen-teleprompter-video-editor/id${APP_ID}`;
 export const SUPPORT_EMAIL = "hello@zenproducts.ai";
+
+// The founder, named on every blog post, feature and comparison page, and on /about. Profiles are
+// the ones his own site lists in its Person markup (thekgaurav.com, read 26 Nov 2026); X and
+// Dribbble answered 200 with his name that day, LinkedIn sits behind a login wall.
+export const FOUNDER = {
+  name: "Kumar Gaurav",
+  page: "/about",
+  profiles: [
+    { label: "thekgaurav.com", href: "https://www.thekgaurav.com" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/itsmekgaurav/" },
+    { label: "X", href: "https://x.com/itsmekgaurav" },
+    { label: "Dribbble", href: "https://dribbble.com/itsmekgaurav" },
+  ],
+} as const;
 // Legal text lives on zenproducts.ai (the URLs the App Store listing points at); this site does not
 // carry its own copy, so there is one version to keep correct.
 export const PRIVACY_URL = "https://www.zenproducts.ai/apps/zen-teleprompter/privacy";
