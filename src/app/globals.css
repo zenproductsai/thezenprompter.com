@@ -277,6 +277,9 @@ footer.foot { margin-top: 120px; border-top: 1px solid var(--line); padding-bloc
   .split { grid-template-columns: 1fr 1fr; gap: 14px; }
 }
 /* Phone review fixes (26 Nov 2026, his "not polished on phone"). */
+/* Safety net: a page must never pan sideways on a phone. One unreproduced 388-wide reading at
+   320 on the home page (26 Nov) is the reason; `clip` keeps the sticky header working. */
+html, body { overflow-x: clip; }
 /* A blog card's picture kept its 9:16 shape while filling the card's height, so the browser widened
    it past its column and over the title. The card's column sets the width; the picture just fills. */
 .clip .shot { aspect-ratio: auto !important; width: 100%; }
