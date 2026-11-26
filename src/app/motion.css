@@ -79,7 +79,8 @@ html:not(.js) .hero-take del { background-size: 100% 2px; color: var(--faint); }
 .ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .ticks li { display: inline-flex; gap: 5px; align-items: center; font-size: 13px; font-weight: 600; padding: 4px 8px; border: 1px solid var(--line); background: var(--surface); transition: opacity .3s var(--ease), transform .3s var(--ease); }
 .ticks .ic { color: var(--fill); }
-html.js .hero-take:not(.done) .ticks li { opacity: 0; transform: translateY(4px); }
+/* Hidden, not just transparent, until shown: a half-faded chip read as low-contrast text (Lighthouse, 26 Nov 2026). */
+html.js .hero-take:not(.done) .ticks li { opacity: 0; transform: translateY(4px); visibility: hidden; }
 
 /* -------------------------------------------------- the evening, struck out */
 .evening { min-width: 0; }
@@ -209,7 +210,7 @@ html.js .rv:not(.in) { opacity: 0; transform: translateY(14px); }
   html.js .rv:not(.in), html.js .rv { opacity: 1 !important; transform: none !important; }
   html.js .strike-list span { background-size: 100% 3px; color: var(--faint); }
   html.js .kara span, html.js .kara:not(.in) span { color: inherit; animation: none; }
-  html.js .hero-take:not(.done) .ticks li { opacity: 1; transform: none; }
+  html.js .hero-take:not(.done) .ticks li { opacity: 1; transform: none; visibility: visible; }
   ::view-transition-old(.page), ::view-transition-new(.page) { animation: none; }
 }
 

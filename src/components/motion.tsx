@@ -103,7 +103,7 @@ export function HeroTake() {
         ))}
         <div className="tf">
           <span className="tc">{done ? "5 cuts. Your words kept." : "Stumbles, ums, dead air"}</span>
-          <button type="button" className={`key sm fixkey${step === 5 ? " pressed" : ""}`} onClick={play} aria-label={done ? "Play the example again" : "Fix everything"}>
+          <button type="button" className={`key sm fixkey${step === 5 ? " pressed" : ""}`} onClick={play} aria-label={done ? "Replay the example" : "Fix everything"}>
             <Icon name={done ? "arrow-left" : "sparkle"} />{done ? "Replay" : "Fix everything"}
           </button>
         </div>
