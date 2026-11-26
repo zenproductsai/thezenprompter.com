@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { clip, pageMeta } from "@/lib/meta";
 import { notFound } from "next/navigation";
 import Blocks, { headingsOf } from "@/components/Blocks";
 import DocPage from "@/components/DocPage";
@@ -13,13 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const a = findHelp((await params).slug);
   if (!a) return {};
-  return {
-    title: a.title,
-    description: a.answer,
-    alternates: { canonical: helpHref(a) },
-    openGraph: { type: "article", title: `${a.title} · Zen Teleprompter: Video Editor`, description: a.answer, url: helpHref(a), modifiedTime: a.reviewed },
-    twitter: { title: `${a.title} · Zen Teleprompter: Video Editor`, description: a.answer },
-  };
+  return pageMeta({ title: a.title, description: clip(a.answer), path: helpHref(a), type: "article", published: a.reviewed, modified: a.reviewed });
 }
 
 export default async function HelpArticle({ params }: { params: Promise<{ slug: string }> }) {

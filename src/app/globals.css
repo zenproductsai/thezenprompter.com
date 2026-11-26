@@ -98,6 +98,11 @@ p { margin: 0; }
 /* hero */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; padding-top: 48px; align-items: start; }
 .hero h1 s { text-decoration-thickness: 0.09em; text-decoration-color: var(--fill); color: var(--faint); }
+/* The kicker is part of the h1, so the heading names the product category in words people search
+   for, while the big line stays the brand promise. */
+.hero h1 { display: grid; gap: 14px; }
+.hero h1 .disp { display: block; }
+.hero-kicker { text-transform: uppercase; letter-spacing: 0.08em; text-wrap: pretty; }
 .hero .lede { margin: 20px 0 28px; }
 .hero .note { margin-top: 18px; font-size: 14px; color: var(--muted); }
 .take { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
@@ -239,7 +244,10 @@ p { margin: 0; }
 
 /* footer */
 footer.foot { margin-top: 120px; border-top: 1px solid var(--line); padding-block: 44px calc(36px + env(safe-area-inset-bottom, 0px)); font-size: 14px; }
-.foot .cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 28px; }
+/* The brand sits on its own row above five link columns, so its name never squeezes into them. */
+.foot .cols { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; }
+.foot .cols > div:first-child { grid-column: 1 / -1; }
+@media (max-width: 1100px) { .foot .cols { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .foot h2 { font-family: var(--font-display), sans-serif; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
 .foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .foot ul a { color: var(--muted); }

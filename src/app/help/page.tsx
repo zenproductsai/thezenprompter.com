@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Link from "next/link";
 import { HELP, HELP_CATEGORIES, helpHref, helpIn } from "@/content/help";
 import { HelpSearch } from "@/components/client";
@@ -7,13 +8,7 @@ import type { IconName } from "@/components/icon-paths";
 
 const DESC = "How to use Zen Teleprompter: the reading line, Follow my voice, selfie takes, Fix everything, captions, export, remotes, your plan and privacy.";
 
-export const metadata: Metadata = {
-  title: "Help centre",
-  description: DESC,
-  alternates: { canonical: "/help" },
-  openGraph: { title: "Help centre · Zen Teleprompter: Video Editor", description: DESC, url: "/help" },
-  twitter: { title: "Help centre · Zen Teleprompter: Video Editor", description: DESC },
-};
+export const metadata: Metadata = pageMeta({ title: "Help centre", description: DESC, path: "/help" });
 
 export default function HelpPage() {
   const entries = HELP.map((a) => ({ href: helpHref(a), title: a.title, summary: a.summary, words: `${a.title} ${a.summary} ${a.answer}`.toLowerCase() }));

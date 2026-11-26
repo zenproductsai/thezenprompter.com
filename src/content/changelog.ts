@@ -9,6 +9,9 @@ export const RELEASES: Release[] = [
   {
     version: "1.5.4",
     date: "2026-11-26",
+    // Apple's lookup API still served 1.5.3 on 26 Nov 2026 (released 24 Nov). Remove this status
+    // once 1.5.4 is on the App Store.
+    status: "In App Review",
     notes: [
       "Fix everything now finishes your video: music, a cover, captions and the words for your post.",
       "Zooms land on the lines that matter.",

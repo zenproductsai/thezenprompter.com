@@ -62,7 +62,9 @@
 .hero-take del.x { background-size: 100% 2px; color: var(--faint); }
 html:not(.js) .hero-take del { background-size: 100% 2px; color: var(--faint); }
 .hero-take.collapsed del { max-width: 0; opacity: 0; }
-.hero-take.collapsed .tl.col { max-height: 0; padding-block: 0; opacity: 0; overflow: hidden; }
+/* visibility goes too, once the fade ends: an opacity-0 row is still "text" to contrast checkers
+   and screen readers (Lighthouse flagged these rows at 1.03:1 on 26 Nov 2026). */
+.hero-take.collapsed .tl.col { max-height: 0; padding-block: 0; opacity: 0; overflow: hidden; visibility: hidden; transition: background-color .25s var(--ease), padding .4s var(--ease), max-height .4s var(--ease), opacity .3s var(--ease), visibility 0s linear .4s; }
 .fixkey { transition: transform .14s var(--ease), box-shadow .25s var(--ease), background-color .2s; }
 .fixkey.pressed { transform: scale(.94); box-shadow: 0 0 0 8px rgba(255, 221, 0, .22); }
 .hero-phone { display: grid; gap: 12px; justify-items: start; }

@@ -22,13 +22,13 @@ export default function Blocks({ blocks }: { blocks: Post["blocks"] | Block[] })
           case "shot": return (
             <figure key={i}>
               {b.src === "/shots/watch.jpg"
-                ? <Cycle device="watch" sizes="220px" frames={[
+                ? <Cycle device="watch" sizes="220px" priority={i < 2} frames={[
                     { src: "/watch/watch-01-playing-device.webp", alt: "Apple Watch remote, playing", label: "Playing" },
                     { src: "/watch/watch-02-paused-device.webp", alt: "Apple Watch remote, paused", label: "Paused" },
                     { src: "/watch/watch-03-recording-device.webp", alt: "Apple Watch remote while a take records", label: "Recording" },
                     { src: "/watch/watch-04-sections-device.webp", alt: "Apple Watch remote, sections", label: "Sections" },
                   ]} />
-                : <PhoneShot src={b.src} alt={b.alt} sizes="260px" />}
+                : <PhoneShot src={b.src} alt={b.alt} sizes="260px" priority={i < 2} />}
               <figcaption className="cap">{b.caption}</figcaption>
             </figure>
           );

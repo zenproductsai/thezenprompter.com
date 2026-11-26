@@ -8,6 +8,8 @@ import type { Block } from "./help";
 export type Post = {
   slug: string;
   title: string;
+  /** The <title>, when the search wording differs from the headline. */
+  seoTitle?: string;
   description: string;
   tag: string;
   published: string;
@@ -21,6 +23,9 @@ export const POSTS: Post[] = [
   {
     slug: "read-a-script-without-looking-like-it",
     title: "How to read a script without looking like it",
+    // "how to read a script while looking into the camera" is Google's first suggestion for
+    // "how to read a script" (US autocomplete, 26 Nov 2026).
+    seoTitle: "How to read a script while looking at the camera",
     description: "Why your eyes give you away, how far below the lens is too far, and five habits that make a read sound like you mean it.",
     tag: "Craft",
     published: "2026-11-26",
@@ -49,6 +54,49 @@ export const POSTS: Post[] = [
       { type: "p", parts: ["A script that scrolls at a fixed speed makes you race it. Follow my voice moves the script only when you speak, so a pause is a pause, not a scramble to catch up."] },
       { type: "h2", id: "once", text: "Read it once out loud first" },
       { type: "p", parts: ["Before the first take, read the script aloud once without recording. You will find the sentence you can't say, and it is cheaper to fix it in the script than in the edit."] },
+    ],
+  },
+  {
+    slug: "how-to-use-a-teleprompter-on-iphone",
+    title: "How to use a teleprompter on your iPhone",
+    // Searched as "how to use a teleprompter on iphone", "on your phone" and "for youtube videos"
+    // (US autocomplete, 26 Nov 2026).
+    description: "No rig needed. Where to put the phone, how fast to scroll, how to write for the prompter, and how to record a take you will not have to fix.",
+    tag: "Craft",
+    published: "2026-11-26",
+    modified: "2026-11-26",
+    minutes: 6,
+    shot: "/shots/modes.jpg",
+    blocks: [
+      { type: "p", parts: ["A teleprompter on a phone is two things at once: the camera, and the words. The trick is making them feel like one. Here is the setup I would give a friend filming their first talking-head video tonight."] },
+      { type: "h2", id: "setup", text: "Pick your setup" },
+      { type: "list", items: [
+        "Front camera, script on top. The simplest. Prop the phone at eye level, read the words on the screen, record. This is the Selfie-style prompter.",
+        "Teleprompter glass. A beam-splitter rig in front of a camera or a second phone. The text has to be mirrored so it reads the right way in the glass. This is Teleprompter mode.",
+      ] },
+      { type: "shot", src: "/shots/modes.jpg", alt: "Choosing the setup: Teleprompter, mirrored for glass, or Selfie-style, front camera with the script on top", caption: "Glass, or the front camera." },
+      { type: "h2", id: "place", text: "Put the phone at eye level, at arm's length" },
+      { type: "p", parts: ["A phone looking up at you is the least flattering angle there is. Stack books, use a tripod, whatever puts the lens level with your eyes. Then go back to arm's length or a little further. Distance shrinks how far your eyes travel between the words and the lens: on an iPhone 17 Pro, a line in the middle of the screen turns your eyes 12.7° from the lens at 30 cm and 6.4° at 60 cm."] },
+      { type: "p", parts: ["Where the line sits matters even more. Zen Teleprompter keeps the line you are reading 8.9 mm under the lens, about 1° at arm's length. ", { text: "The full table", href: "/blog/read-a-script-without-looking-like-it" }, "."] },
+      { type: "h2", id: "speed", text: "Set the speed, or let it follow you" },
+      { type: "p", parts: ["A fixed speed works if you rehearse. Start at 1x, which is your reading pace, and nudge it in quarter steps between 0.5x and 2x. If you pause to think, or slow down for the important line, turn on Follow my voice instead: the script moves when you speak and waits when you stop. ", { text: "How voice scrolling works", href: "/features/teleprompter-that-follows-your-voice" }, "."] },
+      { type: "h2", id: "write", text: "Write for the prompter, not the page" },
+      { type: "list", items: [
+        "Short sentences. Each one should fit in a breath.",
+        "Say it the way you talk. Contractions, plain words.",
+        "Mark the pauses. {BEAT} or {PAUSE 2} in the script tells you where to stop, and the prompter never shows them as words to say.",
+        "Notes to yourself go in braces: {smile}, {hold up the box}. They stay dimmed and are skipped by voice scrolling.",
+      ] },
+      { type: "h2", id: "text", text: "Make the text easy to find" },
+      { type: "p", parts: ["Bigger text means fewer words per line and less hunting. Pick a typeface you read fast. Words you have already said turn gold and the word you are on is bold, so if you look away you land back in the right place."] },
+      { type: "h2", id: "record", text: "Record so the edit is easy" },
+      { type: "list", items: [
+        "Read the script out loud once before you record. The sentence you trip over is cheaper to fix now.",
+        "When you stumble, don't stop. Pause, and say the whole sentence again.",
+        "Use a remote. An Apple Watch or a Bluetooth teleprompter remote starts, pauses and skips without you reaching for the phone.",
+      ] },
+      { type: "h2", id: "after", text: "After the take" },
+      { type: "p", parts: ["Because the app knows your script, Fix everything can tell your retakes from your lines. It keeps the last try of every sentence, drops the silences and the ums, and adds captions, music and a title. ", { text: "What it cuts, and how to check", href: "/features/remove-filler-words-and-silences" }, "."] },
     ],
   },
   {

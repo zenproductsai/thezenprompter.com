@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Link from "next/link";
 import { APPLE_EULA_URL, PRICES } from "@/content/site";
 import { Crumbs, Faq, GetApp, Icon, JsonLd, Rail, faqLd } from "@/components/ui";
 
 const TITLE = "Pricing";
-const DESC = `Zen Teleprompter is ${PRICES.monthly} a month or ${PRICES.yearly} a year, with ${PRICES.trialDays} days free first. Everything is in both plans.`;
+const DESC = `Zen Teleprompter is ${PRICES.monthly} a month or ${PRICES.yearly} a year after a ${PRICES.trialDays}-day free trial. Every feature is in both plans, with no watermark. Cancel any time in your Apple account.`;
 
-export const metadata: Metadata = {
-  title: TITLE,
-  description: DESC,
-  alternates: { canonical: "/pricing" },
-  openGraph: { title: `${TITLE} · Zen Teleprompter: Video Editor`, description: DESC, url: "/pricing" },
-  twitter: { title: `${TITLE} · Zen Teleprompter: Video Editor`, description: DESC },
-};
+export const metadata: Metadata = pageMeta({ title: "Pricing: 3 days free, then monthly or yearly", description: DESC, path: "/pricing" });
 
 const INCLUDED = [
   "Teleprompter and selfie prompter",

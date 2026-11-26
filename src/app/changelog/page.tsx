@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import { RELEASES } from "@/content/changelog";
 import { fmtDate } from "@/content/site";
 import { Crumbs, Icon } from "@/components/ui";
 
-const DESC = "Every Zen Teleprompter release, newest first.";
+const DESC = "Every Zen Teleprompter release, newest first: what changed in the teleprompter, Fix everything, captions, languages and the Apple Watch app.";
 
-export const metadata: Metadata = {
-  title: "What's new",
-  description: DESC,
-  alternates: { canonical: "/changelog" },
-  openGraph: { title: "What's new · Zen Teleprompter: Video Editor", description: DESC, url: "/changelog" },
-  twitter: { title: "What's new · Zen Teleprompter: Video Editor", description: DESC },
-};
+export const metadata: Metadata = pageMeta({ title: "What's new: every release", description: DESC, path: "/changelog" });
 
 export default function Changelog() {
   return (

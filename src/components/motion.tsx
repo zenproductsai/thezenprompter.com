@@ -132,8 +132,10 @@ type Frame = { src: string; alt: string; label?: string };
 
 /** Crossfades through real screens. Auto-advances only while on screen and without reduced motion;
  *  the dots and a tap on the device step through by hand. */
-export function Cycle({ frames, device, interval = 2600, sizes = "240px", contain = false }: {
+export function Cycle({ frames, device, interval = 2600, sizes = "240px", contain = false, priority = false }: {
   frames: Frame[]; device: "phone" | "watch"; interval?: number; sizes?: string; contain?: boolean;
+  /** Load the first frame eagerly when the device is above the fold (it is then the page's LCP). */
+  priority?: boolean;
 }) {
   const [i, setI] = useState(0);
   const [auto, setAuto] = useState(true);
@@ -152,7 +154,7 @@ export function Cycle({ frames, device, interval = 2600, sizes = "240px", contai
   }, [auto, frames.length, interval]);
   const go = (k: number) => { setAuto(false); setI(k); };
   const layers = frames.map((f, k) => (
-    <Image key={f.src} src={f.src} alt={k === i ? f.alt : ""} aria-hidden={k !== i} fill sizes={sizes} className={`fill layer${contain ? " contain" : ""}${k === i ? " on" : ""}`} />
+    <Image key={f.src} src={f.src} alt={k === i ? f.alt : ""} aria-hidden={k !== i} fill sizes={sizes} priority={priority && k === 0} className={`fill layer${contain ? " contain" : ""}${k === i ? " on" : ""}`} />
   ));
   return (
     <div className="cycle" ref={box}>

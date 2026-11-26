@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import { GetApp, Icon } from "./ui";
 
 const LINKS = [
+  { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
   { href: "/help", label: "Help" },
   { href: "/blog", label: "Blog" },

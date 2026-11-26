@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import { notFound } from "next/navigation";
 import Blocks, { headingsOf } from "@/components/Blocks";
 import DocPage from "@/components/DocPage";
@@ -13,13 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const p = findPost((await params).slug);
   if (!p) return {};
-  return {
-    title: p.title,
-    description: p.description,
-    alternates: { canonical: postHref(p) },
-    openGraph: { type: "article", title: p.title, description: p.description, url: postHref(p), publishedTime: p.published, modifiedTime: p.modified },
-    twitter: { title: p.title, description: p.description },
-  };
+  return pageMeta({ title: p.seoTitle ?? p.title, description: p.description, path: postHref(p), type: "article", published: p.published, modified: p.modified });
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -28,7 +23,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const related = POSTS.filter((x) => x.slug !== p.slug).map((x) => ({ href: postHref(x), label: x.title }));
   return (
     <DocPage crumbs={[{ name: "Blog", href: "/blog" }, { name: p.title, href: postHref(p) }]} kicker={`${p.tag} · ${p.minutes} min`} h1={p.title}
-      path={postHref(p)} type="Article" published={p.published} modified={p.modified} description={p.description}
+      path={postHref(p)} type="BlogPosting" published={p.published} modified={p.modified} description={p.description}
       headings={headingsOf(p.blocks)} related={related} relatedTitle="More posts">
       <Blocks blocks={p.blocks} />
     </DocPage>

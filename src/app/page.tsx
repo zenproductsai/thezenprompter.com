@@ -1,5 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { FAQ, LANGUAGES, PRICES } from "@/content/site";
+import { pageMeta } from "@/lib/meta";
+import { appNode, graph, websiteNode } from "@/lib/schema";
+import { LANG_ALTERNATES } from "@/content/intl";
 import { Faq, GetApp, Icon, JsonLd, Rail, Wave, faqLd } from "@/components/ui";
 import { PhoneShot } from "@/components/devices";
 import { Cycle, HeroTake, RenderPicker, ScrollStory, type StoryStep } from "@/components/motion";
@@ -7,6 +11,17 @@ import { Cycle, HeroTake, RenderPicker, ScrollStory, type StoryStep } from "@/co
 // The page follows one arc: the evening editing eats (problem), one tap (relief), a finished
 // video ready to post (pride). Every product line is checked against the app repo; the example
 // take is labelled as one.
+
+// The title leads with what people search ("teleprompter app for iPhone" is the top Google
+// suggestion for "teleprompter app", 26 Nov 2026) and keeps the App Store name.
+const DESCRIPTION = `A teleprompter app for iPhone and iPad that follows your voice. Then one tap cuts retakes, silences and ums, and adds captions, music and a title. ${PRICES.trialDays} days free.`;
+
+export const metadata: Metadata = pageMeta({
+  absoluteTitle: "Zen Teleprompter: Teleprompter App and Video Editor for iPhone",
+  description: DESCRIPTION,
+  path: "/",
+  languages: LANG_ALTERNATES,
+});
 
 /** A line whose words light up in turn, the way the prompter turns spoken words gold. */
 function Kara({ text, as: Tag = "h2", className = "" }: { text: string; as?: "h1" | "h2" | "p"; className?: string }) {
@@ -72,13 +87,14 @@ const PROUD = [
 export default function Home() {
   return (
     <div className="wrap">
+      <JsonLd data={graph(websiteNode, appNode(DESCRIPTION))} />
       <JsonLd data={faqLd(FAQ)} />
 
       <section className="hero" aria-labelledby="hero-h">
         <div className="hero-copy">
-          <span className="tc y">00:00:00</span>
-          <h1 className="disp d1" id="hero-h">
-            Record once. <s>Edit all night.</s> One tap.
+          <h1 id="hero-h">
+            <span className="tc y hero-kicker">Teleprompter app and video editor for iPhone</span>
+            <span className="disp d1">Record once. <s>Edit all night.</s> One tap.</span>
           </h1>
           <p className="lede">
             Read your script right under the camera. Then Fix everything cuts the stumbles and the dead air, and finishes the video: captions, music, a title and the words for your post.

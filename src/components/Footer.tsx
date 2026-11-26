@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { APP_STORE_URL, PRIVACY_URL, SUPPORT_EMAIL, TERMS_URL } from "@/content/site";
+import { GUIDES, guideHref } from "@/content/guides";
 
 export default function Footer() {
   return (
@@ -14,7 +15,7 @@ export default function Footer() {
           <div>
             <h2>Product</h2>
             <ul>
-              <li><Link href="/">Features</Link></li>
+              <li><Link href="/features">Features</Link></li>
               <li><Link href="/pricing">Pricing</Link></li>
               <li><Link href="/changelog">What&apos;s new</Link></li>
               <li><a href={APP_STORE_URL} target="_blank" rel="noopener">App Store</a></li>
@@ -29,6 +30,17 @@ export default function Footer() {
             </ul>
           </div>
           <div>
+            <h2>Features</h2>
+            <ul>{GUIDES.filter((g) => g.kind === "features").map((g) => <li key={g.slug}><Link href={guideHref(g)}>{g.h1}</Link></li>)}</ul>
+          </div>
+          <div>
+            <h2>Compare</h2>
+            <ul>
+              {GUIDES.filter((g) => g.kind === "compare").map((g) => <li key={g.slug}><Link href={guideHref(g)}>{g.h1}</Link></li>)}
+              <li><Link href="/compare">All comparisons</Link></li>
+            </ul>
+          </div>
+          <div>
             <h2>Zen Products</h2>
             <ul>
               <li><a href={PRIVACY_URL}>Privacy</a></li>
@@ -40,6 +52,8 @@ export default function Footer() {
         <div className="legal">
           <span>© 2026 Zen Products</span>
           <span>iPhone and iPad · iOS 17 or later · 14 languages</span>
+          {/* Plain links to the translated pages, so they are found by crawling as well as by hreflang. */}
+          <span><Link href="/pt-br" hrefLang="pt-BR" lang="pt-BR">Português</Link> · <Link href="/es" hrefLang="es" lang="es">Español</Link></span>
         </div>
       </div>
     </footer>

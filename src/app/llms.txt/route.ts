@@ -1,10 +1,13 @@
 import { APP_STORE_URL, FAQ, FIX, LANGUAGES, PRICES, PRIVACY_URL, SITE_URL, SUPPORT_EMAIL, THEMES } from "@/content/site";
 import { HELP, helpHref } from "@/content/help";
 import { POSTS, postHref } from "@/content/posts";
+import { GUIDES, guideHref } from "@/content/guides";
 
 export const dynamic = "force-static";
 
 // A plain-text summary for AI assistants (llmstxt.org), built from the same facts as the pages.
+// Kept because it costs nothing, not because it is known to work: Google says AI Overviews need no
+// "AI text files", and no major engine has said it reads llms.txt (checked 26 Nov 2026).
 export function GET() {
   const body = `# Zen Teleprompter: Video Editor
 
@@ -26,11 +29,18 @@ export function GET() {
 
 ## Pages
 - [Home](${SITE_URL}/)
+- [Em português](${SITE_URL}/pt-br)
+- [En español](${SITE_URL}/es)
+- [Features](${SITE_URL}/features)
+- [Compare teleprompter apps](${SITE_URL}/compare)
 - [Pricing](${SITE_URL}/pricing)
 - [Help centre](${SITE_URL}/help)
 - [Blog](${SITE_URL}/blog)
 - [What's new](${SITE_URL}/changelog)
 - [Contact](${SITE_URL}/contact)
+
+## Features and comparisons
+${GUIDES.map((g) => `- [${g.h1}](${SITE_URL}${guideHref(g)}): ${g.answer}`).join("\n")}
 
 ## Help
 ${HELP.map((a) => `- [${a.title}](${SITE_URL}${helpHref(a)}): ${a.answer}`).join("\n")}

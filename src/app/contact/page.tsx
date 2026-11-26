@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Link from "next/link";
 import { SUPPORT_EMAIL } from "@/content/site";
 import { CopyEmail } from "@/components/client";
@@ -6,13 +7,7 @@ import { Crumbs, Icon, Rail } from "@/components/ui";
 
 const DESC = "Questions, problems or ideas go straight to the person who builds Zen Teleprompter. Answered within 24 hours.";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: DESC,
-  alternates: { canonical: "/contact" },
-  openGraph: { title: "Write to the Founder · Zen Teleprompter: Video Editor", description: DESC, url: "/contact" },
-  twitter: { title: "Write to the Founder · Zen Teleprompter: Video Editor", description: DESC },
-};
+export const metadata: Metadata = pageMeta({ title: "Contact: write to the founder", description: DESC, path: "/contact" });
 
 export default function Contact() {
   return (

@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { APP_STORE_URL, SITE_URL, fmtDate } from "@/content/site";
 import { Crumbs, Icon, JsonLd, type Crumb } from "./ui";
+import { APP_ID_REF, ORG_ID, SITE_ID } from "@/lib/schema";
 
 /** The frame help articles and blog posts share: breadcrumbs, title, the direct answer, an
  *  on-this-page list, the body and a side column. Article schema is built here so no page forgets it. */
 export default function DocPage({ crumbs, kicker, h1, answer, path, type, published, modified, description, headings, related, relatedTitle, children }: {
-  crumbs: Crumb[]; kicker: string; h1: string; answer?: string; path: string; type: "Article" | "TechArticle";
+  crumbs: Crumb[]; kicker: string; h1: string; answer?: string; path: string; type: "BlogPosting" | "TechArticle" | "Article";
   published: string; modified: string; description: string; headings: { id: string; text: string }[];
   related: { href: string; label: string }[]; relatedTitle: string; children: React.ReactNode;
 }) {
@@ -19,8 +20,12 @@ export default function DocPage({ crumbs, kicker, h1, answer, path, type, publis
     dateModified: modified,
     mainEntityOfPage: url,
     image: `${url}/opengraph-image`,
-    author: { "@type": "Organization", name: "Zen Products", url: SITE_URL },
-    publisher: { "@type": "Organization", name: "Zen Products", logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.png` } },
+    inLanguage: "en",
+    isPartOf: { "@id": SITE_ID },
+    about: { "@id": APP_ID_REF },
+    // Named in full, not only by @id: Google reads each JSON-LD block on its own.
+    author: { "@type": "Organization", "@id": ORG_ID, name: "Zen Products", url: "https://www.zenproducts.ai/" },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "Zen Products", logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.png` } },
   };
   return (
     <div className="wrap">
