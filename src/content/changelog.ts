@@ -9,10 +9,8 @@ export const RELEASES: Release[] = [
   {
     version: "1.5.5",
     date: "2026-11-27",
-    // Submitted to App Review on 27 Nov 2026. Remove this status once 1.5.5 is on the App Store.
     // The 30% first-period offer is left out on purpose: it is shown only to eligible people in the
     // app, and the site states no prices.
-    status: "In App Review",
     notes: [
       "A new editor: your video on top, and your take as a line of words, story moments and sound. Tap a word to cut it.",
       "Fix everything shows each step on one screen as it finishes: Cut, Sound, Look, Story and Share.",
