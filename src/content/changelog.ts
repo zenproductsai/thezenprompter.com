@@ -7,6 +7,18 @@ export type Release = { version: string; date: string; status?: string; notes: s
 
 export const RELEASES: Release[] = [
   {
+    version: "1.5.6",
+    date: "2026-11-28",
+    status: "In App Review",
+    // His rule (28 Nov 2026): What's New is quirky and never reveals how a feature works.
+    notes: [
+      "Your script now brings its own visuals. We'll let it introduce itself.",
+      "Newcomers get a brand new hello. Don't tell the old one.",
+      "Zen Premium got a glow-up. Less squinting, more knowing.",
+      "We tidied up behind the scenes. Everything feels smoother, steadier and a little less dramatic.",
+    ],
+  },
+  {
     version: "1.5.5",
     date: "2026-11-27",
     // The 30% first-period offer is left out on purpose: it is shown only to eligible people in the
